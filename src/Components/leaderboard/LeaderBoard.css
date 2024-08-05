@@ -1,0 +1,41 @@
+/* Leaderboard.css */
+
+.leaderboard-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .leaderboard-header {
+    font-family: 'Arial Rounded MT', Arial, sans-serif;
+  }
+  
+  .filters {
+    margin-bottom: 20px;
+  }
+  
+  .filters label {
+    margin-right: 10px;
+  }
+  
+  .filters select {
+    margin-left: 10px;
+    padding: 5px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .table thead th {
+    border-bottom: 2px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .table tbody td {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+  }
+  
