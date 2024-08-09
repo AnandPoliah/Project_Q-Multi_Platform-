@@ -5,16 +5,22 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f8f9fa;
+  font-size: 18px;
+  font-weight: 600;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  padding-bottom: 40px;
+  background-image: url('C:\1.REACT JS\pro\src\Files\genshin.jpg');
+  background-size: cover; /* Ensure the image covers the entire container */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent image from repeating */
 }
 
 /* BigDiv container styles */
 .BigDiv {
   display: flex;
   flex-direction: column;
-  width: 80%;
-  height: 525px;
+  width: 70%;
+  height: 60vh;
   max-width: 1200px;
   background-color: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -22,14 +28,23 @@
   overflow: hidden;
 }
 
-/* BigDiv header styles */
+/* Header styling */
 .quiz-header {
   text-align: center;
-  margin-bottom: 40px;
-  color: #333;
-  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+  font-size: 2.5rem;
+  font-weight: bold;
 }
 
+.quiz-subheader {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+/* Styling for BigDiv01 and its inner elements */
 .BigDiv01 {
   display: flex;
   justify-content: center;
@@ -51,7 +66,7 @@
   text-align: center;
 }
 
-/* BigDiv grid section styles */
+/* Styling for BigDiv02 and its inner elements */
 .BigDiv02 {
   display: flex;
   flex-direction: row;
@@ -68,14 +83,14 @@
   height: 100%;
   background-color: #f0f1f0;
   border-radius: 20px;
-  margin: 0 10px; /* Add space between the labels */
-  cursor: pointer; /* Ensures the entire div is clickable */
+  margin: 0 10px;
+  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .BigDiv0201.selected {
-  background-color: #090089; /* Change the background color when selected */
-  color: #fff; /* Optional: Change text color for better contrast */
+  background-color: #090089;
+  color: #fff;
 }
 
 .BigDiv020101 {
@@ -114,4 +129,15 @@
 
 .button-next:disabled {
   pointer-events: none;
+}
+
+/* Correct and incorrect options */
+.BigDiv0201.correct {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.BigDiv0201.incorrect {
+  background-color: #dc3545;
+  color: #fff;
 }

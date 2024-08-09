@@ -1,41 +1,92 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import { QuizContext } from '../context/Quizcontext';
-import { Link } from 'react-router-dom';
+import { QuizContext } from '../context/QuizContext';
+import { Link, useLocation } from 'react-router-dom';
+import './ResultPage.css';
 
 function ResultPage() {
-    const {mark,wrongtopic,quizTopic,quizName,username}=useContext(QuizContext);
-    
-    useEffect(() => {
-    const resDet={
+  const { mark, quizTopic, quizName, username } = useContext(QuizContext);
+  const location = useLocation();
+  const { quizId, correctFocusTopic } = location.state || {};
+  const [wrongTopics, setWrongTopics] = useState([]);
+
+  useEffect(() => {
+    const resDet = {
       participant: username,
-      mark:mark,
+      mark: mark,
       qname: quizName,
-      qtopic: quizTopic
-    }
-    axios.post('http://localhost:8080/result/insertResult',resDet)
+      qtopic: quizTopic,
+      quizId: quizId
+    };
+
+    axios.post('http://localhost:8080/result/insertResult', resDet)
       .then(response => {
-          
+        console.log("result uploaded");
       })
       .catch(error => {
         alert('Result error:', error);
       });
-    }, []);
 
+    // Update the wrong topics count based on the fetched quiz data
+    axios.get('http://localhost:8080/quiz/getQuiz')
+      .then(response => {
+        const filteredQuiz = response.data.find(quiz => quiz.quizId === quizId);
+        if (filteredQuiz) {
+          const topicCounts = {};
+
+          filteredQuiz.questions.forEach(question => {
+            const topic = question.focusTopic;
+            if (topic) {
+              topicCounts[topic] = (topicCounts[topic] || 0) + 1;
+            }
+          });
+
+          const topicsArray = Object.keys(topicCounts).map(topic => ({
+            topic,
+            totalQuestions: topicCounts[topic],
+            totalCorrect: correctFocusTopic[topic] || 0
+          }));
+
+          setWrongTopics(topicsArray);
+        }
+      })
+      .catch(error => console.error('Error fetching quiz data:', error));
+  }, [username, mark, quizName, quizTopic, quizId, correctFocusTopic]);
 
   return (
-    <div>
-      <h2>Result Page</h2>
-      <p>QuizTopic: {quizTopic} - QuizName: {quizName} - You Scored : {mark}</p>
-      <ul>
-                {wrongtopic.map((quiz, index) => (
-                    <li key={index}>
-                        {quiz.topic} - {quiz.count} quizzes
-                    </li>
-                ))}
-            </ul>
-      <Link to='/'>home</Link>
-      <Link to='/leaderboard'>LeaderBoard</Link>
+    <div className="result-container">
+      <h2 className="result-header">Result Page</h2>
+      <div className="result-info">
+        <ul>
+          <li>Quiz Topic: {quizTopic}</li>
+          <li>Quiz Name: {quizName}</li>
+          <li>You Scored: {mark}</li>
+        </ul>
+      </div>
+      <table className="result-table">
+        <thead>
+          <tr>
+            <th>Quiz Topic</th>
+            <th>Total Questions</th>
+            <th>No of Correct</th>
+            <th>No of Wrong</th>
+          </tr>
+        </thead>
+        <tbody>
+          {wrongTopics.map((quiz, index) => (
+            <tr key={index}>
+              <td>{quiz.topic}</td>
+              <td>{quiz.totalQuestions}</td>
+              <td>{quiz.totalCorrect}</td>
+              <td>{quiz.totalQuestions - quiz.totalCorrect}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className="links">
+        <Link to="/">Home</Link>
+        <Link to="/leaderboard">Leaderboard</Link>
+      </div>
     </div>
   );
 }

@@ -7,11 +7,11 @@ export const QuizProvider = ({ children }) => {
   const [quizTopic, setQuizTopic] = useState('');
   const [quizName, setQuizName] = useState('');
   const [quizId, setQuizId] = useState(null);
-  const [mark,setMark]=useState(0);
-  const [wrongtopic,setWrongTopic]=useState({});
-
+  const [mark, setMark] = useState(0);
+  const [aifoctopic, setAifocTopic] = useState({}); 
+  const [aimark, setAimark] = useState(0); 
   return (
-    <QuizContext.Provider value={{ username, setUsername, quizTopic, setQuizTopic, quizName, setQuizName,mark,setMark,wrongtopic,setWrongTopic,quizId,setQuizId}}>
+    <QuizContext.Provider value={{ username, setUsername, quizTopic, setQuizTopic, quizName, setQuizName, mark, setMark, quizId, setQuizId ,aifoctopic,setAifocTopic,aimark,setAimark}}>
       {children}
     </QuizContext.Provider>
   );

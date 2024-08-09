@@ -1,41 +1,100 @@
-/* Leaderboard.css */
-
+/* Container for the entire leaderboard */
 .leaderboard-container {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-  }
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+  background-image: linear-gradient(135deg, #f0f9ff 0%, #d9e2f2 50%, #f0f4f8 100%);
+  min-height: 100vh;
+  background-image: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 50%, #e0f7fa 100%);
+  color: #2c3e50;
+}
+
+/* Content area styling */
+.leaderboard-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header styling */
+.leaderboard-header {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #2c3e50; /* Darker color for better contrast */
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+
+.navbar-container {
   
-  .leaderboard-header {
-    font-family: 'Arial Rounded MT', Arial, sans-serif;
-  }
-  
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding-bottom: 20px;
+}
+
+/* Filters styling */
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+
+.filter label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #34495e;
+}
+
+.filter select {
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid #007bff;
+  background-color: #fff;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Table styling */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table th, .table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #007bff;
+  color: #000000;
+  font-weight: 600;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Ensure responsiveness */
+@media (max-width: 768px) {
   .filters {
-    margin-bottom: 20px;
+    flex-direction: column;
   }
-  
-  .filters label {
-    margin-right: 10px;
-  }
-  
-  .filters select {
-    margin-left: 10px;
-    padding: 5px;
-  }
-  
-  .table {
+
+  .filter {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+    margin-bottom: 15px;
   }
-  
-  .table thead th {
-    border-bottom: 2px solid #ddd;
-    padding: 10px;
-    text-align: left;
-  }
-  
-  .table tbody td {
-    border-bottom: 1px solid #ddd;
-    padding: 10px;
-  }
-  
+}

@@ -1,14 +1,15 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { QuizContext } from '../context/Quizcontext';
+import { QuizContext } from '../context/QuizContext';
 import './SignupComponent.css';
 import QICON from '../../Files/QICON.jpg';
 
 export default function SignupComponent() {
   const [signupDetails, setSignupDetails] = useState({});
+  const [notification, setNotification] = useState({ message: '', type: '' }); // Notification state
   const navigate = useNavigate();
-  const { setUsername } = useContext(QuizContext); // Use the context
+  const { setUsername } = useContext(QuizContext); 
 
   const checkUserExists = async (username) => {
     try {
@@ -25,19 +26,20 @@ export default function SignupComponent() {
 
     const userExists = await checkUserExists(signupDetails.username);
     if (userExists) {
-      alert('User already exists. Redirecting to login...');
-      navigate('/login');
+      setNotification({ message: 'User already exists. Redirecting to login...', type: 'error' });
+      setTimeout(() => navigate('/login'), 2000); // Redirect after 2 seconds
       return;
     }
 
     axios.post('http://localhost:8080/user/insertUser', signupDetails)
       .then(response => {
-        alert('Signup successful:');
+        setNotification({ message: 'Signup successful!', type: 'success' });
         setUsername(signupDetails.username); 
-        navigate('/'); 
+        setTimeout(() => navigate('/'), 2000); // Redirect after 2 seconds
       })
       .catch(error => {
         console.error('Signup error:', error);
+        setNotification({ message: 'Signup failed. Please try again.', type: 'error' });
       });
   };
 
@@ -73,6 +75,11 @@ export default function SignupComponent() {
           </form>
         </div>
       </div>
+      {notification.message && (
+        <div className={`notification ${notification.type}`}>
+          {notification.message}
+        </div>
+      )}
     </div>
   );
 }

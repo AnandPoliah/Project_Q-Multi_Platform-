@@ -1,22 +1,42 @@
 .AI_total {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f8f9fa;
-  padding: 20px; /* Optional: adds some space around the BigDiv */
+  background: linear-gradient(to right, #a1c4fd, #c2e9fb);
   position: relative;
+  padding-bottom: 20px;
 }
 
+.Heading
+{
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
 
+.Topic
+{
+  font-size:3rem;
+  font-weight: bolder;
+  padding-top: 10px;
+  
+}
+.diff
+{
+  font-size: 1.5rem;
+  padding-bottom: 10PX;
+  font-weight: bold;
+}
 .notification {
   position: fixed;
   top: 10px;
   left: 50%;
   transform: translateX(-50%);
   padding: 10px 20px;
-  background-color: #000;
-  color: #fff;
+  background-color:#333;
+  color:#ffffff;
   border-radius: 5px;
   font-size: 16px;
   z-index: 1000; /* Ensure it is on top of other elements */
@@ -30,7 +50,7 @@
   width: 80%;
   height: 525px;
   max-width: 1200px;
-  background-color: #ffffff;
+  background-color: #e0eafc;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   overflow: hidden;
@@ -42,7 +62,7 @@
   align-items: center;
   padding: 40px;
   height: 50%; /* Adjusted to 50% height */
-  background-color: #e9ecef;
+  background-color: #e0eafc;
   color: #333;
 }
 
@@ -71,7 +91,11 @@
   align-items: center;
   width: 25%;
   height: 100%;
-  background-color: #f0f1f0;
+  background-color: #e0eafc;
+  border-radius: 20px;
+  border-width: 3px;
+  border-style: solid;
+  border-color: #2c3e50;
   border-radius: 20px;
   margin: 0 10px; /* Add space between the labels */
   cursor: pointer; /* Ensures the entire div is clickable */
