@@ -2,12 +2,14 @@
 
 import React, { useContext, useState } from 'react';
 import './Navigationbar.css';
-import QICON from '../../Files/QICON.jpg';
-import { FaJava, FaPython, FaReact, FaTrophy, FaRobot, FaUserCircle } from 'react-icons/fa';
+import QICON from '../../../Files/QICON.jpg';
+import { FaJava, FaPython, FaReact, FaTrophy, FaRobot, FaUserCircle, FaChartLine,FaPlus } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import Modal from '../login_signup/Modal';
-import LoginComponent from '../login_signup/LoginComponent';
-import { QuizContext } from '../context/QuizContext';
+import Modal from '../../login_signup/Modal';
+import LoginComponent from '../../login_signup/LoginComponent';
+import { QuizContext } from '../../context/QuizContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChartLine } from '@fortawesome/free-solid-svg-icons';
 
 
 const Navigationbar = () => {
@@ -15,11 +17,16 @@ const Navigationbar = () => {
   const navigate = useNavigate();
   const [showLoginModal, setShowLoginModal] = useState(false);
 
-  const updateQuizTopic = (topic) => {
-    if (!username) {
+  const updateQuizTopic = (topic) => 
+  {
+    if (!username) 
+    {
       setShowLoginModal(true);
-    } else {
-      switch (topic) {
+    } 
+    else 
+    {
+      switch (topic) 
+      {
         case 'profile':
           navigate('/profile');
           break;
@@ -55,24 +62,20 @@ const Navigationbar = () => {
             <img src={QICON} alt="QICON" className="navbar-image" onClick={()=> updateQuizTopic("Home")}/>
           </li>
           <li className="tooltip-container">
-            <FaJava className="navbar-icon" onClick={() => updateQuizTopic('Java')} />
-            <div className="tooltip">Java</div>
+          <FaChartLine className='navbar-icon' onClick={() => updateQuizTopic('React')} />
+          <div className="tooltip">Adaptive Learning</div>
           </li>
           <li className="tooltip-container">
-            <FaPython className="navbar-icon" onClick={() => updateQuizTopic('Python')} />
-            <div className="tooltip">Python</div>
+          <FaRobot className="navbar-icon" onClick={() => updateQuizTopic('AI')} />
+          <div className="tooltip">AI Quiz</div>
           </li>
           <li className="tooltip-container">
-            <FaReact className="navbar-icon" onClick={() => updateQuizTopic('React')} />
-            <div className="tooltip">React</div>
+          <FaPlus className="navbar-icon" onClick={() => updateQuizTopic('Python')} />
+          <div className="tooltip">Create</div>
           </li>
           <li className="tooltip-container">
             <FaTrophy className="navbar-icon" onClick={() => updateQuizTopic('Leader')} />
             <div className="tooltip">Leaderboard</div>
-          </li>
-          <li className="tooltip-container">
-            <FaRobot className="navbar-icon" onClick={() => updateQuizTopic('AI')} />
-            <div className="tooltip">AI Quiz</div>
           </li>
           <li className="tooltip-container">
             <FaUserCircle className="navbar-icon" onClick={() => updateQuizTopic('profile')} />

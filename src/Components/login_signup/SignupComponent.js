@@ -25,19 +25,22 @@ export default function SignupComponent() {
     e.preventDefault();
 
     const userExists = await checkUserExists(signupDetails.username);
-    if (userExists) {
+    if (userExists) 
+    {
       setNotification({ message: 'User already exists. Redirecting to login...', type: 'error' });
-      setTimeout(() => navigate('/login'), 2000); // Redirect after 2 seconds
+      setTimeout(() => navigate('/'), 2000); // Redirect after 2 seconds
       return;
     }
 
     axios.post('http://localhost:8080/user/insertUser', signupDetails)
-      .then(response => {
+      .then(response => 
+      {
         setNotification({ message: 'Signup successful!', type: 'success' });
         setUsername(signupDetails.username); 
         setTimeout(() => navigate('/'), 2000); // Redirect after 2 seconds
       })
-      .catch(error => {
+      .catch(error => 
+      {
         console.error('Signup error:', error);
         setNotification({ message: 'Signup failed. Please try again.', type: 'error' });
       });

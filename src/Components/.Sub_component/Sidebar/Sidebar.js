@@ -1,8 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { QuizContext } from '../context/QuizContext';
-import { FaBars, FaJava, FaHome,FaPython, FaReact, FaCode, FaLeaf, FaUserCircle, FaTrophy, FaRobot } from 'react-icons/fa';
+import { QuizContext } from '../../context/QuizContext';
+import { FaBars, FaJava, FaHome,FaPython, FaReact, FaCode, FaLeaf, FaUserCircle, FaTrophy, FaRobot, FaStethoscope, FaTools, FaLightbulb } from 'react-icons/fa';
 import './Sidebar.css';
+import Navigationbar from '../NavBar/Navigationbar';
 
 const Sidebar = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -31,7 +32,8 @@ const Sidebar = () => {
     };
 
     return (
-        <>
+        <div>
+            <Navigationbar/>
             <FaBars className="sidebar-toggle-icon" onClick={toggleSidebar} />
             <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
                 <div className="sidebar-brand">
@@ -59,18 +61,24 @@ const Sidebar = () => {
                         </li>
                         <li>
                             <button onClick={() => updateQuizTopic('CPP')} className="sidebar-link">
-                                <FaCode className="sidebar-icon" />
-                                <span className="sidebar-text">CPP</span>
+                                <FaStethoscope className="sidebar-icon" />
+                                <span className="sidebar-text">NEET</span>
                             </button>
                         </li>
                         <li>
                             <button onClick={() => updateQuizTopic('Spring')} className="sidebar-link">
-                                <FaLeaf className="sidebar-icon" />
-                                <span className="sidebar-text">Spring</span>
+                                <FaTools className="sidebar-icon" />
+                                <span className="sidebar-text">JEE</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button onClick={() => updateQuizTopic('Spring')} className="sidebar-link">
+                                <FaLightbulb className="sidebar-icon" />
+                                <span className="sidebar-text">Aptitude</span>
                             </button>
                         </li>
                     </div>
-                    <div className='side-bottom'>
+                    {/*<div className='side-bottom'>
                         <li>
                             <button onClick={() => updateQuizTopic('profile')} className="sidebar-link">
                                 <FaUserCircle className="sidebar-icon" />
@@ -83,22 +91,17 @@ const Sidebar = () => {
                                 <span className="sidebar-text">Leaderboard</span>
                             </button>
                         </li>
-                        <li>
-                            <button onClick={() => updateQuizTopic('AI')} className="sidebar-link">
-                                <FaRobot className="sidebar-icon" />
-                                <span className="sidebar-text">AI</span>
-                            </button>
-                        </li>
+                       
                         <li>
                             <button onClick={() => updateQuizTopic('Home')} className="sidebar-link">
                                 <FaHome className="sidebar-icon" />
                                 <span className="sidebar-text">Home</span>
                             </button>
                         </li>
-                    </div>
+                    </div>*/}
                 </ul>
             </div>
-        </>
+        </div>
     );
 };
 

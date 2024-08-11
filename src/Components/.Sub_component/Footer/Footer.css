@@ -1,0 +1,59 @@
+/* src/components/Footer.css */
+
+.nt-footer {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 20px;
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid #444;
+}
+
+.nt-footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.nt-footer-content > div {
+    flex: 1;
+    max-width: 300px;
+    margin: 10px;
+}
+
+.nt-contact h2, .nt-social h2, .nt-about h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.nt-social {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nt-social h2 {
+    margin-bottom: 15px;
+}
+
+.nt-social-links {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.nt-social-links a {
+    margin: 0 15px; /* Adjust as needed */
+}
+
+.nt-social-links img {
+    width: 30px;
+    height: 30px;
+}
+
+.nt-footer-bottom {
+    font-size: 0.9rem;
+    border-top: 1px solid #444;
+    padding-top: 10px;
+}

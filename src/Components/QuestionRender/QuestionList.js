@@ -1,8 +1,8 @@
 import React, { useEffect, useContext, useState } from 'react';
-import CreateQuiz from '../Create/CreateQuiz';
 import { QuizContext } from '../context/QuizContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import QuizTemplate from './QuizTemplate';
 
 const QuestionList = () => {
   const [mark, setMark] = useState(0);
@@ -123,7 +123,7 @@ const QuestionList = () => {
 
   return (
     <div>
-      <CreateQuiz
+      <QuizTemplate
         quiz_id={quizId}
         quizName={quizName}
         quizTopic={quizTopic}

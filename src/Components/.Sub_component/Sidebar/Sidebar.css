@@ -1,7 +1,7 @@
 /* Sidebar toggle icon */
 .sidebar-toggle-icon {
     font-size: 2rem;
-    color: #4c51bf;
+    color: #0066cc;
     cursor: pointer;
     position: fixed;
     top: 1rem;
@@ -11,7 +11,7 @@
   
   /* Sidebar container */
   .sidebar {
-    background-color: #333;
+    background-color: #333333de;
     color: white;
     width: 250px;
     height: 100vh;
@@ -65,7 +65,7 @@
   }
   
   .sidebar-link:hover {
-    background-color: #373c77;
+    background-color: #0066cc;
   }
   
   .sidebar-icon {

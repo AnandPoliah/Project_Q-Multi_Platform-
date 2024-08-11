@@ -1,17 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { QuizContext } from '../context/QuizContext';
-import './JustResult.css';
-import { Navbar } from '@material-tailwind/react';
-import Navigationbar from '../NavBar/Navigationbar';
+import './ResultOfAIQuiz.css';
+import Navigationbar from '../.Sub_component/NavBar/Navigationbar';
 
-function ResultPage() {
+function ResultOfAIQuiz() {
   const { username,aimark,aifoctopic } = useContext(QuizContext);
 
   return (
     <div style={{ background: 'linear-gradient(to right, #a1c4fd, #c2e9fb)', height: '100vh' }}>
     <div className="result-container">
-      <div ><Navigationbar/></div>
+    <div style={{ display: 'flex', justifyContent: 'center'}}>
+    <Navigationbar />
+  </div>
+  
       <h2 className="result-header">Result Page</h2>
       <div className="result-info">
         <ul>
@@ -44,4 +46,4 @@ function ResultPage() {
   );
 }
 
-export default ResultPage;
+export default ResultOfAIQuiz;

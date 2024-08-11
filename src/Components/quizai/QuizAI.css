@@ -1,108 +1,219 @@
-.AI_total {
+/* Main container for the AI quiz */
+.AI-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* Main content area */
+.AI-main {
+  background-color: #9dceff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 60%;
+  height: 75vh;
   position: relative;
-  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
-.Heading
-{
-  font-size: 1.5rem;
-  font-weight: bold;
-  padding-bottom: 10px;
-}
-
-.Topic
-{
-  font-size:3rem;
-  font-weight: bolder;
-  padding-top: 10px;
-  
-}
-.diff
-{
-  font-size: 1.5rem;
-  padding-bottom: 10PX;
-  font-weight: bold;
-}
+/* Notification styling */
 .notification {
-  position: fixed;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 10px 20px;
-  background-color:#333;
-  color:#ffffff;
-  border-radius: 5px;
-  font-size: 16px;
-  z-index: 1000; /* Ensure it is on top of other elements */
-  transition: opacity 0.5s ease-in-out;
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 1.1em;
 }
 
+/* Topic, Heading, Difficulty Level */
+.Topic {
+  font-size: 2rem; /* Increased font size */
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #ffffff;
+}
 
+.Heading {
+  font-size: 2rem; /* Increased font size */
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.diff {
+  font-size: 1.2rem; /* Increased font size */
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #ffffff;
+}
+
+/* Quiz question container */
 .AI_BigDiv {
   display: flex;
   flex-direction: column;
-  width: 80%;
-  height: 525px;
-  max-width: 1200px;
-  background-color: #e0eafc;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  overflow: hidden;
+  height: 100%; /* Fill the height of AI-main */
 }
 
-.AI_BigDiv01 {
+/* Adjust the height of child divs to be equal and make them flexible */
+.AI_BigDiv > div {
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 40px;
-  height: 50%; /* Adjusted to 50% height */
-  background-color: #e0eafc;
-  color: #333;
+  justify-content: center;
+  overflow: auto; /* Ensure content does not overflow */
 }
 
+/* Special handling for .AI_BigDiv_Button */
+.AI_BigDiv_Button {
+  flex: 0 1 auto; /* Allow it to shrink but not grow */
+  margin-bottom: 20px; /* Space below the button */
+}
+
+/* Other child divs */
+.AI_BigDiv01,
+.AI_BigDiv02,
+.AI_BigDiv03 {
+  flex: 1; /* Distribute height equally */
+}
+
+/* Quiz question text */
 .AI_BigDiv0101 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  background-color: #dee2e6;
+  font-size: 1.6em; /* Increased font size */
+  margin-bottom: 20px;
   text-align: center;
+  font-weight: bold;
 }
 
+/* Options container */
 .AI_BigDiv02 {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
-  height: 50%; /* Adjusted to 50% height */
-  padding: 20px;
+  gap: 10px;
 }
 
-.AI_BigDiv0201 {
+.AI_BigDiv03 {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 25%;
-  height: 100%;
-  background-color: #e0eafc;
-  border-radius: 20px;
-  border-width: 3px;
-  border-style: solid;
-  border-color: #2c3e50;
-  border-radius: 20px;
-  margin: 0 10px; /* Add space between the labels */
-  cursor: pointer; /* Ensures the entire div is clickable */
-  transition: background-color 0.3s ease; /* Smooth transition for background color */
+  flex-wrap: wrap;
 }
 
-.AI_BigDiv0201.selected {
-  background-color: #360bab; /* Green background for selected option */
-  color: #fff; /* Change text color for better contrast */
+/* Individual option button */
+.AI_BigDiv0201 {
+  flex: 1 1 calc(50% - 10px); /* Adjusted flex basis to be larger */
+  background-color: #f0f1f0;
+  color: #000;
+  padding: 20px; /* Increased padding */
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 1.2em; /* Increased font size */
+}
+
+.AI_BigDiv0201:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Submit button */
+.AI-submit-button {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1.1em;
+}
+
+.AI-submit-button:hover {
+  background-color: #0056b3;
+}
+
+/* Result button */
+.Result-Button {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  background-color: #009b1f;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1.1em;
+}
+
+.Result-Button :hover {
+  background-color: #218838;
+}
+
+/* Toggle Assistant button */
+.toggle-assistant-button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1em;
+  margin-bottom: 20px;
+}
+
+/* Move the toggle button to the top right of the .AI-main */
+.AI-main .toggle-assistant-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.toggle-assistant-button:hover {
+  background-color: #138496;
+}
+
+/* QuizAssistant container */
+.AI-assistant {
+  position: fixed;
+  top: 0;
+  right: -400px; /* Start off-screen */
+  width: 300px;
+  height: 100%;
+  background-color: #f1f1f1;
+  border-left: 1px solid #ddd;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px 0 0 8px;
+  transition: right 0.3s ease;
+  padding: 20px;
+  z-index: 1000;
+}
+
+/* Active state to show the assistant */
+.AI-assistant.active {
+  right: 0; /* Slides into view */
+}
+
+/* Styling for correct answers */
+.AI_BigDiv0201.correct {
+  background-color: #28a745;
+  color: #fff;
+}
+
+/* Styling for wrong answers */
+.AI_BigDiv0201.wrong {
+  background-color: #dc3545;
+  color: #fff;
 }

@@ -6,7 +6,6 @@
     align-items: center;
     height: 600px;
     border-radius: 10px;
-    background-image: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 50%, #e0f7fa 100%);
   }
   
  
@@ -92,11 +91,12 @@ p
  
   .signup-login
   {
-    padding-top: 7%;
+      padding-top: 7%;
       text-align: center;
       align-items: center;
       justify-content: center;
       display: flex;
+      color: #333;
   }
 
   .para
@@ -108,15 +108,18 @@ p
 /* Add this to your existing LoginComponent.css file */
 .notification {
   position: fixed;
-  top: 10px;
-  right: 10px;
+  margin: 20px;
+  width: 20%;
+  height: 10vh;
   background-color: #333;
   color: #fff;
   padding: 10px 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
   z-index: 9999;
-  cursor: pointer;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .notification.success {
