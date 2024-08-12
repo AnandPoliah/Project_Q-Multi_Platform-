@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { FunctionDeclarationSchemaType } from '@google/generative-ai';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { QuizContext } from '../context/QuizContext';
 import './QuizAI.css';
 import QuizAssistant from './QuizAssistent';
@@ -17,34 +17,32 @@ import QB7 from '../../Files/QB-7.jpg'
 
 
 
-
-
-
 const QuizAI = () => {
     const [questionData, setQuestionData] = useState(null);
     const [selectedOption, setSelectedOption] = useState(null);
     const [correctAnswer, setCorrectAnswer] = useState(null);
-    const [quesTop, setquesTop] = useState('');
-    const [queslevel, setQuesLevel] = useState('easy');
+    const [quesTop, setquesTop] = useState('////');
     const [error, setError] = useState('');
     const [mark, setMark] = useState(0);
     const [btnName, setBtnName] = useState("Submit");
-    const [answerStatus, setAnswerStatus] = useState(null);
+    const [answerStatus, setAnswerStatus] = useState(null); 
     const [notification, setNotification] = useState('');
     const [focusTopics, setFocusTopics] = useState({});
-    const [assistantVisible, setAssistantVisible] = useState(false); // State for QuizAssistant visibility
-    const topicarr = ['CPP', 'JAVA', 'APTITUDE', 'PYTHON'];
-    const levelarr = ['easy', 'moderate', 'hard'];
+    const [assistantVisible,setAssistantVisible] = useState(false);
     const { setAimark, setAifocTopic } = useContext(QuizContext);
-    let navigate = useNavigate();
-
+    
     const [backgroundColor, setBackgroundColor] = useState('');
     const [backgroundImage, setBackgroundImage] = useState('');
 
 
+    
+    let navigate = useNavigate();
+    const location = useLocation();
+    const { topicarr, levelarr } = location.state || {};
+    const tno=topicarr.length;
     const fetchData = async () => {
         try {
-            const genAI = new GoogleGenerativeAI("AIzaSyCRFwjjqhajzpFQBjFjFr72ih-_2eEwXAg");
+            const genAI = new GoogleGenerativeAI("AIzaSyCDQcG0OnIKS7elHebW2Bsy8TCLrKXqWnE");
             const model = genAI.getGenerativeModel({
                 model: "gemini-1.5-pro",
                 generationConfig: {
@@ -63,41 +61,25 @@ const QuizAI = () => {
                     }
                 }
             });
-            let topic = topicarr[Math.floor(Math.random() * 4)];
+            let topic=topicarr[Math.floor(Math.random()*tno)]
             setquesTop(topic);
-            const prompt = `Create a multiple-choice question with four options. The question should belong to the main topic of ${topic}, with a toughness level of ${queslevel}. The focus topic should be automatically generated based on the content of the question. Include the correct answer as an integer (1-4).`;
+            const prompt = `Create a challenging and creative multiple-choice question with four options. The question should belong to the main topic of ${topic}, with a toughness level of ${levelarr}. Ensure the question requires critical thinking and problem-solving skills from the user. The focus topic should be automatically generated based on the content of the question. Include the correct answer as an integer (1-4).`;
             const result = await model.generateContent(prompt);
-
-            const responseText = await result.response.text();
+            const responseText = await result.response.text(); 
+            //console.log("Raw response text:", responseText);
             const parsedResponse = JSON.parse(responseText);
             setQuestionData(parsedResponse);
             setCorrectAnswer(parsedResponse.correctOption);
-        }
+        } 
         catch (error) 
         {
             console.error('Error fetching data:', error);
-            <div>
-                setError('Failed to fetch data. Please try again later.');
-                <Button className="Result-Button" onClick={handleError()}>retry</Button>
-            </div>
-
+            setError('Failed to fetch data. Please try again later.');
         }
     };
 
-
-    const handleError = () =>
-    {
-      setQuestionData(null);
-      setSelectedOption(null);
-      setCorrectAnswer(null);
-      setAnswerStatus(null);
-      setNotification('');
-    }
-
-
-    useEffect(() => 
-    {
-        fetchData();
+    useEffect(() => {
+        fetchData(); 
     }, []);
 
     const handleDivClick = (id) => {
@@ -112,16 +94,15 @@ const QuizAI = () => {
             if (selectedOption === correctAnswer) {
                 setAnswerStatus('correct');
                 setNotification('Hooray! You are correct!');
-                cust = 'correct';
-                setMark(mark + 1);
-            }
+                cust = 'correct';        
+                setMark(mark + 1);    
+            } 
             else {
                 setAnswerStatus('wrong');
                 setNotification('Let\'s try again.');
                 cust = 'wrong';
             }
-            setFocusTopics(prev => 
-            {
+            setFocusTopics(prev => {
                 const currentTopic = quesTop + " - " + questionData.focustopic;
                 const newStats = { ...prev };
 
@@ -139,21 +120,16 @@ const QuizAI = () => {
                 return newStats;
             });
             setBtnName("Next");
-        }
-        else if (btnName === "Next") 
-        {
+        } 
+        else if (btnName === "Next") {
             setQuestionData(null);
             setSelectedOption(null);
             setCorrectAnswer(null);
-            setAnswerStatus(null);
+            setAnswerStatus(null); 
             setNotification('');
             setBtnName("Submit");
-            if (cust === 'wrong') {
-                setQuesLevel(queslevel === 'easy' ? 'easy' : levelarr[levelarr.indexOf(queslevel) - 1]);
-            } else {
-                setQuesLevel(queslevel === 'hard' ? 'hard' : levelarr[levelarr.indexOf(queslevel) + 1]);
-            }
-            fetchData();
+            fetchData(); 
+            setAssistantVisible(false);
         }
     };
 
@@ -175,12 +151,13 @@ const QuizAI = () => {
 
     if (error) {
         return (
-            <div>
+            <div className='error-container'>
                 <p>{error}</p>
-                <button onClick={() => fetchData()}>reload</button>
+                <button onClick={() => fetchData()} className='reload-button'>Reload</button>
             </div>
         );
     }
+    
 
     if (!questionData) {
         return <p>Loading...</p>;
@@ -189,31 +166,25 @@ const QuizAI = () => {
     const getDivStyle = (id) => {
         if (btnName === "Submit") {
             return {
-                backgroundColor: selectedOption === id ? '#360bab' : '#f0f1f0',
+                backgroundColor: selectedOption === id ? '#360bab' : '#e0eafc',
                 color: selectedOption === id ? '#fff' : '#000',
             };
-        }
+        } 
         else if (answerStatus) {
             if (id === correctAnswer) {
                 return {
-                    backgroundColor: '#28a745', // Green 
+                    backgroundColor: '#28a745', 
                     color: '#fff',
                 };
-            }
+            } 
             else if (id === selectedOption && answerStatus === 'wrong') {
                 return {
-                    backgroundColor: '#dc3545', // Red 
+                    backgroundColor: '#dc3545',
                     color: '#fff',
                 };
-            }
-            else {
-                return {
-                    backgroundColor: '#f0f1f0',
-                    color: '#000',
-                };
-            }
+            } 
         }
-        return {};
+        return {}; 
     };
 
     const getCorrectAnswerText = () => {
@@ -240,7 +211,6 @@ const QuizAI = () => {
         setBackgroundImage(image);
     };
 
-
     return (
         <div className='AI-container' style={{ backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'none',backgroundSize: 'cover', transition: 'background-image 0.3s'}}>
         <div>
@@ -254,7 +224,7 @@ const QuizAI = () => {
         <label><input type="radio" value="QB7" checked={backgroundImage === QB7} onChange={() => handleChange1(QB7)} /> </label>
     </div>
         <div className='Topic'>{quesTop}</div>
-        <div className='diff'>{queslevel}</div>
+        <div className='diff'>{levelarr}</div>
             <div className='AI-main' style={{  backgroundColor: backgroundColor}}>
                 {notification && (
                     <div className='notification'>

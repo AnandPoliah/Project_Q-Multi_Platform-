@@ -51,7 +51,7 @@ const ProfilePage = () => {
 
         <div className="filters">
           <label>Filter by Quiz Topic:</label>
-          <select value={selectedTopic} onChange={e => setSelectedTopic(e.target.value)}>
+          <select style={{color:"black"}}value={selectedTopic} onChange={e => setSelectedTopic(e.target.value)}>
             {topics.map(topic => (
               <option key={topic} value={topic}>{topic}</option>
             ))}

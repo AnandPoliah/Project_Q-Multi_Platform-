@@ -1,29 +1,56 @@
-import React, { useState, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { QuizContext } from '../../context/QuizContext';
-import { FaBars, FaJava, FaHome,FaPython, FaReact, FaCode, FaLeaf, FaUserCircle, FaTrophy, FaRobot, FaStethoscope, FaTools, FaLightbulb } from 'react-icons/fa';
+import { FaBars, FaJava, FaPython, FaReact, FaCode, FaLeaf, FaStethoscope, FaTools, FaLightbulb } from 'react-icons/fa';
 import './Sidebar.css';
 import Navigationbar from '../NavBar/Navigationbar';
 
+const iconMap = {
+    'Java': FaJava,
+    'Python': FaPython,
+    'React': FaReact,
+    'NEET': FaStethoscope,
+    'JEE': FaTools,
+    'Aptitude': FaLightbulb
+};
+
 const Sidebar = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const { setQuizTopic } = useContext(QuizContext); // Accessing setQuizTopic from context
+    const [quizTopics, setQuizTopics] = useState([]);
+    const { setQuizTopic } = useContext(QuizContext);
     const navigate = useNavigate();
 
+    useEffect(() => {
+        axios.get('http://localhost:8080/quiz/getQuiz')
+            .then(response => {
+                const uniqueTopics = [...new Set(response.data.map(quiz => quiz.quizTopic))];
+                setQuizTopics(uniqueTopics);
+            })
+            .catch(error => console.error('Error:', error));
+    }, []);
+
     const updateQuizTopic = (topic) => {
-        if(topic === 'profile') {
-            navigate('/profile');
-        } else if(topic === "result") {
-            navigate('/result');
-        } else if(topic === "leader") {
-            navigate('/leaderboard');
-        } else if(topic === 'AI') {
-            navigate('/AI');
-        } else if(topic === 'Home') {
-            navigate("/");
-        } else {
-            setQuizTopic(topic);
-            navigate('/QuizPage');
+        switch (topic) {
+            case 'profile':
+                navigate('/profile');
+                break;
+            case 'result':
+                navigate('/result');
+                break;
+            case 'leader':
+                navigate('/leaderboard');
+                break;
+            case 'AI':
+                navigate('/AI');
+                break;
+            case 'Home':
+                navigate('/');
+                break;
+            default:
+                setQuizTopic(topic);
+                navigate('/QuizPage');
+                break;
         }
     };
 
@@ -33,7 +60,7 @@ const Sidebar = () => {
 
     return (
         <div>
-            <Navigationbar/>
+            <Navigationbar />
             <FaBars className="sidebar-toggle-icon" onClick={toggleSidebar} />
             <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
                 <div className="sidebar-brand">
@@ -41,64 +68,18 @@ const Sidebar = () => {
                 </div>
                 <ul className="sidebar-menu">
                     <div className='side-top'>
-                        <li>
-                            <button onClick={() => updateQuizTopic('Java')} className="sidebar-link">
-                                <FaJava className="sidebar-icon" />
-                                <span className="sidebar-text">Java</span>
-                            </button>
-                        </li>
-                        <li>
-                            <button onClick={() => updateQuizTopic('Python')} className="sidebar-link">
-                                <FaPython className="sidebar-icon" />
-                                <span className="sidebar-text">Python</span>
-                            </button>
-                        </li>
-                        <li>
-                            <button onClick={() => updateQuizTopic('React')} className="sidebar-link">
-                                <FaReact className="sidebar-icon" />
-                                <span className="sidebar-text">React</span>
-                            </button>
-                        </li>
-                        <li>
-                            <button onClick={() => updateQuizTopic('CPP')} className="sidebar-link">
-                                <FaStethoscope className="sidebar-icon" />
-                                <span className="sidebar-text">NEET</span>
-                            </button>
-                        </li>
-                        <li>
-                            <button onClick={() => updateQuizTopic('Spring')} className="sidebar-link">
-                                <FaTools className="sidebar-icon" />
-                                <span className="sidebar-text">JEE</span>
-                            </button>
-                        </li>
-                        <li>
-                            <button onClick={() => updateQuizTopic('Spring')} className="sidebar-link">
-                                <FaLightbulb className="sidebar-icon" />
-                                <span className="sidebar-text">Aptitude</span>
-                            </button>
-                        </li>
+                        {quizTopics.map((topic, index) => {
+                            const IconComponent = iconMap[topic] || FaCode; // Default icon if none is mapped
+                            return (
+                                <li key={index}>
+                                    <button onClick={() => updateQuizTopic(topic)} className="sidebar-link">
+                                        <IconComponent className="sidebar-icon" />
+                                        <span className="sidebar-text">{topic}</span>
+                                    </button>
+                                </li>
+                            );
+                        })}
                     </div>
-                    {/*<div className='side-bottom'>
-                        <li>
-                            <button onClick={() => updateQuizTopic('profile')} className="sidebar-link">
-                                <FaUserCircle className="sidebar-icon" />
-                                <span className="sidebar-text">Profile</span>
-                            </button>
-                        </li>
-                        <li>
-                            <button onClick={() => updateQuizTopic('leader')} className="sidebar-link">
-                                <FaTrophy className="sidebar-icon" />
-                                <span className="sidebar-text">Leaderboard</span>
-                            </button>
-                        </li>
-                       
-                        <li>
-                            <button onClick={() => updateQuizTopic('Home')} className="sidebar-link">
-                                <FaHome className="sidebar-icon" />
-                                <span className="sidebar-text">Home</span>
-                            </button>
-                        </li>
-                    </div>*/}
                 </ul>
             </div>
         </div>

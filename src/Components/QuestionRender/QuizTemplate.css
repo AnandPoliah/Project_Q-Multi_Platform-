@@ -25,7 +25,18 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   overflow: hidden;
+  position: relative; /* Needed for absolute positioning of timer */
 }
+
+/* Timer container styling */
+.timer-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 1.2rem;
+  color: #000000; /* Adjust color to ensure visibility against background */
+}
+
 
 /* Header styling */
 .quiz-header {
@@ -84,6 +95,15 @@
   margin: 0 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  overflow: hidden; /* Hide overflow text */
+  text-align: center; /* Center align text */
+}
+
+.BigDiv020101 {
+  font-size: 1rem; /* Adjust font size to fit the container */
+  font-weight: 600; /* Ensure the text is bold if needed */
+  word-wrap: break-word; /* Ensure long words wrap */
+  padding: 10px; /* Add padding to prevent text from touching the edges */
 }
 
 .BigDiv0201.selected {
@@ -138,4 +158,10 @@
 .BigDiv0201.incorrect {
   background-color: #dc3545;
   color: #fff;
+}
+
+
+.background-color-options
+{
+  padding: 20px;
 }

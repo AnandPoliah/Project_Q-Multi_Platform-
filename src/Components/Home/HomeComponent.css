@@ -89,6 +89,8 @@ body {
     width: 90%;
     max-width: 1200px;
     gap: 20px;
+    margin-bottom: 20vh;
+    
 }
 
 .info-card {

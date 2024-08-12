@@ -1,74 +1,76 @@
-QuizCreator.css
+.quiz-creator-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
 
-.newquiz-quiz-creator {
+.quiz-creator {
     max-width: 800px;
-    margin: 0 auto;
+    width: 100%;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
     background-color: #e1eedd;
-    
-    margin-top: 70px; 
+    margin-top: 70px;
     margin-bottom: 45px;
     display: flex;
     flex-direction: column;
 }
 
-
-.newquiz-header {
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 20px;
 }
 
-.newquiz-home-button {
-    background-color: #183a1d; /* Button background color */
+.home-button {
+    background-color: #183a1d;
     color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    display: flex;
+    align-items: center;
 }
 
-.newquiz-home-button:hover {
-    background-color: #27512e; /* Darker color on hover */
+.home-button:hover {
+    background-color: #27512e;
 }
 
-.newquiz-quiz-creator h1 {
-    text-align: left;
-    color: #333;
-    margin: 0; /* Remove default margin to align text */
-    padding-bottom: 20px; /* Padding to separate title from content */
+.header h1 {
+    margin: 0;
     font-size: 40px;
+    color: #333;
 }
 
-
-.newquiz-form-group {
-    margin-bottom: 10px; /* Reduced margin to decrease gap */
+.form-group {
+    margin-bottom: 15px;
 }
 
-.newquiz-form-group label {
+.form-group label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-.newquiz-form-group input[type="text"] {
+.form-group input[type="text"] {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
 }
 
-.newquiz-option-input {
+.option-input {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
 }
 
-.newquiz-option-input input[type="radio"] {
+.option-input input[type="radio"] {
     margin-right: 10px;
     appearance: none;
     width: 20px;
@@ -76,16 +78,15 @@ QuizCreator.css
     border: 2px solid #ccc;
     border-radius: 50%;
     display: inline-block;
-    position: relative;
     cursor: pointer;
     outline: none;
 }
 
-.newquiz-option-input input[type="radio"].newquiz-selected {
+.option-input input[type="radio"].selected {
     border-color: green;
 }
 
-.newquiz-option-input input[type="radio"].newquiz-selected::after {
+.option-input input[type="radio"].selected::after {
     content: '';
     width: 10px;
     height: 10px;
@@ -96,13 +97,13 @@ QuizCreator.css
     left: 4px;
 }
 
-.newquiz-form-buttons {
+.form-buttons {
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
-.newquiz-form-buttons button {
+.form-buttons button {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -111,44 +112,43 @@ QuizCreator.css
     cursor: pointer;
 }
 
-.newquiz-form-buttons button:hover {
-    background-color: #0056b3;
+.form-buttons button:hover {
+    background-color: #d48d4b;
 }
 
-.newquiz-questions-list {
+.questions-list {
     margin-top: 20px;
 }
 
-.newquiz-question-card {
+.question-card {
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 15px;
-    margin-top: 20px; /* Reduced top margin */
-    margin-bottom: 45px; /* Bottom margin for the card */
+    margin-top: 20px;
     position: relative;
 }
 
-.newquiz-question-card p {
+.question-card p {
     margin: 5px 0;
 }
 
-.newquiz-questions-list ul {
+.questions-list ul {
     padding-left: 0;
     list-style-type: none;
 }
 
-.newquiz-questions-list li {
+.questions-list li {
     padding: 5px 0;
 }
 
-.newquiz-correct-option {
+.correct-option {
     background-color: #d4edda;
     padding: 2px 5px;
     border-radius: 3px;
 }
 
-.newquiz-question-actions {
+.question-actions {
     position: absolute;
     top: 15px;
     right: 15px;
@@ -156,34 +156,34 @@ QuizCreator.css
     align-items: center;
 }
 
-.newquiz-edit-icon,
-.newquiz-delete-icon {
+.edit-icon,
+.delete-icon {
     cursor: pointer;
-    margin-left: 4px; /* Gap between icons */
+    margin-left: 10px;
 }
 
-.newquiz-edit-icon {
-    color: #007bff; /* Blue color for Edit icon */
+.edit-icon {
+    color: #007bff;
 }
 
-.newquiz-edit-icon:hover {
-    color: #0056b3; /* Darker blue on hover */
+.edit-icon:hover {
+    color: #0056b3;
 }
 
-.newquiz-delete-icon {
-    color: #dc3545; /* Dark red color for Delete icon */
+.delete-icon {
+    color: #dc3545;
 }
 
-.newquiz-delete-icon:hover {
-    color: #c82333; /* Darker red on hover */
+.delete-icon:hover {
+    color: #c82333;
 }
 
-.newquiz-publish-button {
+.publish-button {
     text-align: center;
     margin-top: 20px;
 }
 
-.newquiz-publish-button button {
+.publish-button button {
     padding: 10px 20px;
     background-color: #183a1d;
     color: white;
@@ -192,12 +192,12 @@ QuizCreator.css
     cursor: pointer;
 }
 
-.newquiz-publish-button button:hover {
+.publish-button button:hover {
     background-color: #218838;
 }
 
-.newquiz-error {
+.error {
     color: red;
     font-size: 14px;
-    margin-top: -5px;
+    margin-top: 5px;
 }

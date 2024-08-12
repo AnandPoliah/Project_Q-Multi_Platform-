@@ -26,7 +26,7 @@ const HomeComponent = () => {
     }
     else if(topic === "Adapt")
     {
-      navigate('/Adapt');
+      navigate('/AdaptList');
     }
     else if(topic === "LeaderBoard")
     {
@@ -58,7 +58,7 @@ const HomeComponent = () => {
         <div className="hero-content">
           <h1>Welcome to QuizMaster</h1>
           <p>Your journey to knowledge starts here.</p>
-          <button className="explore-button" onClick={() => handleCardClick('Random')}>Explore Quizzes</button>
+          <button className="explore-button" onClick={() => handleCardClick('Random')}>Explore Quizzes ➔</button>
         </div>
       </section>
 

@@ -15,6 +15,8 @@ import QuizTemplate from './Components/QuestionRender/QuizTemplate';
 import TopicList from './Components/TopicList/TopicList';
 import Adaptive from './Components/Adaptive/Adaptive';
 import QuizCreator from './Components/Quiz_Creator/QuizCreator';
+import AdaptList from './Components/Adaptive/AdaptList';
+import ResultOfAIQuiz from './Components/QuizAI/ResultOfAIQuiz';
 
 function ProtectedRoute({ children }) 
 {
@@ -38,8 +40,10 @@ function App() {
           
           <Route path="/form" element={<ProtectedRoute><QuizIntro/></ProtectedRoute>}/>
           <Route path="/AI" element={<ProtectedRoute><QuizAI/></ProtectedRoute>}/>
+          <Route path ="ResultOfAIQuiz" element={<ProtectedRoute><ResultOfAIQuiz/></ProtectedRoute>}/>
           
           <Route path="/Adapt" element={<ProtectedRoute><Adaptive/></ProtectedRoute>}/>
+          <Route path="AdaptList" element={<ProtectedRoute><AdaptList/></ProtectedRoute>} />
 
           <Route path="/create" element={<ProtectedRoute><QuizCreator/></ProtectedRoute>}/>
           

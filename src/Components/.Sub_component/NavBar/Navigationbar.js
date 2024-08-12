@@ -30,14 +30,17 @@ const Navigationbar = () => {
         case 'profile':
           navigate('/profile');
           break;
-        case 'result':
-          navigate('/result');
+        case 'Adapt':
+          navigate('/AdaptList');
           break;
         case 'Leader':
           navigate('/leaderboard');
           break;
         case 'AI':
           navigate('/form');
+          break;
+        case 'Create':
+          navigate('/create');
           break;
         case 'Home':
           navigate('/');
@@ -62,7 +65,7 @@ const Navigationbar = () => {
             <img src={QICON} alt="QICON" className="navbar-image" onClick={()=> updateQuizTopic("Home")}/>
           </li>
           <li className="tooltip-container">
-          <FaChartLine className='navbar-icon' onClick={() => updateQuizTopic('React')} />
+          <FaChartLine className='navbar-icon' onClick={() => updateQuizTopic('Adapt')} />
           <div className="tooltip">Adaptive Learning</div>
           </li>
           <li className="tooltip-container">
@@ -70,7 +73,7 @@ const Navigationbar = () => {
           <div className="tooltip">AI Quiz</div>
           </li>
           <li className="tooltip-container">
-          <FaPlus className="navbar-icon" onClick={() => updateQuizTopic('Python')} />
+          <FaPlus className="navbar-icon" onClick={() => updateQuizTopic('Create')} />
           <div className="tooltip">Create</div>
           </li>
           <li className="tooltip-container">

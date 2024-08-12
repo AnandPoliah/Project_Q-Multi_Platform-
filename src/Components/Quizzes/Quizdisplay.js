@@ -28,7 +28,7 @@ const Quizdisplay = () => {
         <div className="quiz-display-container">
             <Sidebar className="sidebar" /> {/* Ensure Sidebar receives the correct class */}
             <div className="content">
-                <header className="header">
+                <header className="header-for-title">
                     <h1 className="header-title">{quizTopic}</h1>
                 </header>
                 <main className="quiz-cards-container">

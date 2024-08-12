@@ -36,10 +36,7 @@ const QuestionList = () => {
 
   const handleNext = () => {
     if (isSubmitMode) {
-      if (choosed === null) {
-        alert("Choose an option");
-        return;
-      }
+      
 
       const currentQuestion = questionList[index];
       const focusTopic = currentQuestion.focusTopic;

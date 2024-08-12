@@ -10,12 +10,13 @@
     text-align: center;
     margin-bottom: 30px;
     font-size: 2rem;
-    color: #444;
+    color: #ffffff;
   }
   
   .result-info {
     margin-bottom: 30px;
     text-align: center;
+    color: #ffffff;
   }
   
   .result-info ul {
@@ -52,7 +53,7 @@
     font-size: 1rem;
   }
   
-  .result-table tbody tr:nth-child(even) {
+  .result-table tbody tr {
     background-color: #f9f9f9;
   }
   

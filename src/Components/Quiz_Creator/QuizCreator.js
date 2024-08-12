@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import './QuizCreator.css';
 import { FaTrash, FaEdit, FaHome } from 'react-icons/fa';
@@ -16,11 +16,11 @@ const QuizCreator = () => {
   const [questions, setQuestions] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
   const [errors, setErrors] = useState({});
-  const { username } = useContext(QuizContext); // Get username from UserContext
+  const { username } = useContext(QuizContext); // Get username from QuizContext
   const navigate = useNavigate(); // Initialize navigate
 
-  // Set creatorName from UserContext
-  React.useEffect(() => {
+  // Set creatorName from QuizContext
+  useEffect(() => {
     if (username) {
       setCreatorName(username);
     }
@@ -137,16 +137,15 @@ const QuizCreator = () => {
   };
 
   return (
-    <div className='entirePage'>
-      
-      <div className="newquiz-quiz-creator">
-      <div className="newquiz-header">
-         <h1>Create a Quiz</h1>
-        <button className="newquiz-home-button" onClick={handleHomeClick}>
-         Home
-        </button>
+    <div className='quiz-creator-container'>
+      <div className="quiz-creator">
+        <div className="header">
+          <h1>Create a Quiz</h1>
+          <button className="home-button" onClick={handleHomeClick}>
+            <FaHome /> Home
+          </button>
         </div>
-        <div className="newquiz-form-group">
+        <div className="form-group">
           <label>Quiz Topic:</label>
           <input
             type="text"
@@ -157,9 +156,9 @@ const QuizCreator = () => {
             }}
             onFocus={() => clearError('quizTopic')}
           />
-          {errors.quizTopic && <div className="newquiz-error">{errors.quizTopic}</div>}
+          {errors.quizTopic && <div className="error">{errors.quizTopic}</div>}
         </div>
-        <div className="newquiz-form-group">
+        <div className="form-group">
           <label>Quiz Name:</label>
           <input
             type="text"
@@ -170,9 +169,9 @@ const QuizCreator = () => {
             }}
             onFocus={() => clearError('quizName')}
           />
-          {errors.quizName && <div className="newquiz-error">{errors.quizName}</div>}
+          {errors.quizName && <div className="error">{errors.quizName}</div>}
         </div>
-        <div className="newquiz-form-group">
+        <div className="form-group">
           <label>Creator Name:</label>
           <input
             type="text"
@@ -180,8 +179,8 @@ const QuizCreator = () => {
             readOnly
           />
         </div>
-        <div className="newquiz-question-card">
-          <div className="newquiz-form-group">
+        <div className="question-card">
+          <div className="form-group">
             <label>Question:</label>
             <input
               type="text"
@@ -192,18 +191,18 @@ const QuizCreator = () => {
               }}
               onFocus={() => clearError('question')}
             />
-            {errors.question && <div className="newquiz-error">{errors.question}</div>}
+            {errors.question && <div className="error">{errors.question}</div>}
           </div>
-          <div className="newquiz-form-group">
+          <div className="form-group">
             <label>Options:</label>
             {options.map((option, index) => (
-              <div key={index} className="newquiz-option-input">
+              <div key={index} className="option-input">
                 <input
                   type="radio"
                   name="correctOption"
                   checked={correctOptionIndex === index}
                   onChange={() => handleRadioClick(index)}
-                  className={correctOptionIndex === index ? 'newquiz-selected' : ''}
+                  className={correctOptionIndex === index ? 'selected' : ''}
                 />
                 <input
                   type="text"
@@ -214,9 +213,9 @@ const QuizCreator = () => {
                 />
               </div>
             ))}
-            {errors.options && <div className="newquiz-error">{errors.options}</div>}
-            {errors.correctOption && <div className="newquiz-error">{errors.correctOption}</div>}
-            <div className="newquiz-form-group">
+            {errors.options && <div className="error">{errors.options}</div>}
+            {errors.correctOption && <div className="error">{errors.correctOption}</div>}
+            <div className="form-group">
               <label>Focus Topic:</label>
               <input
                 type="text"
@@ -227,18 +226,18 @@ const QuizCreator = () => {
                 }}
                 onFocus={() => clearError('focusTopic')}
               />
-              {errors.focusTopic && <div className="newquiz-error">{errors.focusTopic}</div>}
+              {errors.focusTopic && <div className="error">{errors.focusTopic}</div>}
             </div>
           </div>
-          <div className="newquiz-form-buttons">
+          <div className="form-buttons">
             <button onClick={handleSubmit}>Submit</button>
             <button onClick={handleClear}>Clear</button>
           </div>
         </div>
-        <div className="newquiz-questions-list">
+        <div className="questions-list">
           <h2>Questions</h2>
           {questions.map((q, index) => (
-            <div key={index} className="newquiz-question-card">
+            <div key={index} className="question-card">
               <p><strong>Q{index + 1}:</strong> {q.question}</p>
               <ul>
                 {[
@@ -247,20 +246,20 @@ const QuizCreator = () => {
                   q.option3,
                   q.option4
                 ].map((option, i) => (
-                  <li key={i} className={i === q.correctOption - 1 ? 'newquiz-correct-option' : ''}>
+                  <li key={i} className={i === q.correctOption - 1 ? 'correct-option' : ''}>
                     Option {i + 1}: {option} {i === q.correctOption - 1 && <strong>(Correct Option)</strong>}
                   </li>
                 ))}
               </ul>
-              <div className="newquiz-question-actions">
-                <FaEdit className="newquiz-edit-icon" onClick={() => handleEdit(index)} />
-                <FaTrash className="newquiz-delete-icon" onClick={() => handleDelete(index)} />
+              <div className="question-actions">
+                <FaEdit className="edit-icon" onClick={() => handleEdit(index)} />
+                <FaTrash className="delete-icon" onClick={() => handleDelete(index)} />
               </div>
             </div>
           ))}
         </div>
-        <div className="newquiz-publish-button">
-          <button onClick={handlePublish} className="newquiz-publish-button">Publish</button>
+        <div className="publish-button">
+          <button onClick={handlePublish}>Publish</button>
         </div>
       </div>
     </div>
