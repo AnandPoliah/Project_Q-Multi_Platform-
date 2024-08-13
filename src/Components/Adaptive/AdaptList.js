@@ -107,6 +107,7 @@ const AdaptList = () => {
       </Modal>
 
       {showWelcomePopup && (
+        <div style={{height:'100vh',width:'100%', backgroundColor:"blue"}}> 
         <div className="welcome-popup">
           <div className="welcome-content">
             <h2 style ={{ fontSize: '30px'}}>What does this do?</h2>
@@ -117,6 +118,7 @@ const AdaptList = () => {
             <p>4.The Following Question is rendered based on your past wrongly answered question</p>
             <button className="welcome-close-button" onClick={handlePopupClose}>Got it</button>
           </div>
+        </div>
         </div>
       )}
     </div>

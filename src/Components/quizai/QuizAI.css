@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  overflow: auto; /* Make the container scrollable */
 }
 
 /* Main content area */
@@ -18,6 +19,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  overflow: hidden; /* Prevent overflow within AI-main itself */
 }
 
 /* Notification styling */
@@ -61,6 +63,7 @@
   display: flex;
   flex-direction: column;
   height: 100%; /* Fill the height of AI-main */
+  overflow-y: auto; /* Make the content inside AI-main scrollable */
 }
 
 /* Adjust the height of child divs to be equal and make them flexible */

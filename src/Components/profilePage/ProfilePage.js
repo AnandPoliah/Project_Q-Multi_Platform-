@@ -39,12 +39,12 @@ const ProfilePage = () => {
 
   return (
     <div className="profile-page-container">
-      <h1 className="profile-header">User Profile</h1>
+      <h1 className="profile-header" style={{ fontSize:'40px'}}>User Profile</h1>
 
       <div className="user-details">
         <h2>Details</h2>
-        <p><strong>Username:</strong> {username}</p>
-      </div>
+        <p style={{ fontSize: '20px' }}><strong>Username:</strong> {username}</p>
+        </div>
 
       <div className="test-results">
         <h2>Previous Test Results</h2>
@@ -58,7 +58,7 @@ const ProfilePage = () => {
           </select>
 
           <label>Filter by Quiz Name:</label>
-          <select value={selectedQuizName} onChange={e => setSelectedQuizName(e.target.value)}>
+          <select style={{color:'black'}} value={selectedQuizName} onChange={e => setSelectedQuizName(e.target.value)}>
             {quizNames.map(name => (
               <option key={name} value={name}>{name}</option>
             ))}

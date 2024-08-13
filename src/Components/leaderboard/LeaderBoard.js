@@ -9,6 +9,7 @@ const LeaderBoard = () => {
   const [selectedTopic, setSelectedTopic] = useState('All');
   const [leaderboardData, setLeaderBoardData] = useState([]);
   const [selectedQuizName, setSelectedQuizName] = useState('All');
+  const [selectedParticipant, setSelectedParticipant] = useState('All');
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -21,14 +22,15 @@ const LeaderBoard = () => {
       .catch(error => console.error('Error:', error));
   }, []);
 
+  const names = [...new Set(leaderboardData.map(entry => entry.participant)), 'All'];
   const topics = [...new Set(leaderboardData.map(entry => entry.qtopic)), 'All'];
   const quizNames = [...new Set(leaderboardData.map(entry => entry.qname)), 'All'];
 
   const filteredData = leaderboardData.filter(entry =>
     (selectedTopic === 'All' || entry.qtopic === selectedTopic) &&
-    (selectedQuizName === 'All' || entry.qname === selectedQuizName)
+    (selectedParticipant === 'All' || entry.participant === selectedParticipant) &&
+    (selectedQuizName === 'All' || entry.qname === selectedQuizName) 
   );
-
   const sortedData = filteredData.sort((a, b) => b.mark - a.mark);
 
   return (
@@ -39,6 +41,9 @@ const LeaderBoard = () => {
       <div className="leaderboard-content">
         <h1 className="leaderboard-header">Leaderboard</h1>
         <div className="filters">
+
+
+
           <div className="filter">
             <label htmlFor="topic-select">Filter by Quiz Topic:</label>
             <select id="topic-select" value={selectedTopic} onChange={e => setSelectedTopic(e.target.value)}>
@@ -47,6 +52,16 @@ const LeaderBoard = () => {
               ))}
             </select>
           </div>
+
+          <div className="filter">
+          <label>Filter by participant:</label>
+          <select value={selectedParticipant} onChange={e => setSelectedParticipant(e.target.value)}>
+            {names.map(topic => (
+              <option key={topic} value={topic}>{topic}</option>
+            ))}
+          </select>
+        </div>
+
           <div className="filter">
             <label htmlFor="quiz-select">Filter by Quiz Name:</label>
             <select id="quiz-select" value={selectedQuizName} onChange={e => setSelectedQuizName(e.target.value)}>
@@ -56,6 +71,8 @@ const LeaderBoard = () => {
             </select>
           </div>
         </div>
+
+
         <table className="table">
           <thead>
             <tr>

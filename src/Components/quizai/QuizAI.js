@@ -42,7 +42,7 @@ const QuizAI = () => {
     const tno=topicarr.length;
     const fetchData = async () => {
         try {
-            const genAI = new GoogleGenerativeAI("AIzaSyCDQcG0OnIKS7elHebW2Bsy8TCLrKXqWnE");
+            const genAI = new GoogleGenerativeAI("AIzaSyDbSkyCbEk2DC3uCVLHKTpgSdfj02XGDRY");
             const model = genAI.getGenerativeModel({
                 model: "gemini-1.5-pro",
                 generationConfig: {

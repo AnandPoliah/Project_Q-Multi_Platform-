@@ -11,7 +11,7 @@ const QuizAssistant = ({ question, solution, resources }) => {
     console.log("Solutioin:"+solution);
     const fetchHint = async () => {
         try {
-            const genAI = new GoogleGenerativeAI("AIzaSyCDQcG0OnIKS7elHebW2Bsy8TCLrKXqWnE");
+            const genAI = new GoogleGenerativeAI("AIzaSyDf6jnI-AMnAZESlwOZgLau8sa8slJlCxg");
             const model = genAI.getGenerativeModel({
                 model: "gemini-1.5-pro",
                 generationConfig: {
