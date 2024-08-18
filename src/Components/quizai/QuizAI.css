@@ -75,9 +75,48 @@
 }
 
 /* Special handling for .AI_BigDiv_Button */
+/* Container for buttons and radio buttons */
 .AI_BigDiv_Button {
-  flex: 0 1 auto; /* Allow it to shrink but not grow */
+  position: relative; /* Allow absolute positioning of children */
+  height: 50px; /* Set height for alignment purposes */
+  display: flex;
+  align-items: center; /* Vertically center the content */
+  justify-content: space-between; /* Distribute space between items */
   margin-bottom: 20px; /* Space below the button */
+}
+
+/* Radio buttons container */
+.radio-btns {
+  position: absolute; /* Absolute positioning to place it in the top-left corner */
+  top: 0;
+  left: 0;
+  display: flex; /* Align radio buttons in a row */
+  gap: 10px; /* Space between radio buttons */
+}
+
+/* Toggle Assistant button */
+.toggle-assistant-button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1em;
+}
+
+/* Position the toggle button in the top-right corner of the container */
+.AI_BigDiv_Button .toggle-assistant-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* Hover effect for the toggle button */
+.toggle-assistant-button:hover {
+  background-color: #138496;
 }
 
 /* Other child divs */
@@ -160,33 +199,12 @@
   font-size: 1.1em;
 }
 
-.Result-Button :hover {
+.Result-Button:hover {
   background-color: #218838;
 }
 
 /* Toggle Assistant button */
-.toggle-assistant-button {
-  background-color: #28a745;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-size: 1em;
-  margin-bottom: 20px;
-}
 
-/* Move the toggle button to the top right of the .AI-main */
-.AI-main .toggle-assistant-button {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-
-.toggle-assistant-button:hover {
-  background-color: #138496;
-}
 
 /* QuizAssistant container */
 .AI-assistant {
@@ -219,4 +237,140 @@
 .AI_BigDiv0201.wrong {
   background-color: #dc3545;
   color: #fff;
+}
+
+/* Wrapper for radio buttons and button */
+.radio-assistant-wrapper {
+  display: flex;
+  justify-content: space-between; /* Space radio buttons and button */
+  align-items: center; /* Center items vertically */
+  margin-bottom: 20px; /* Space below the wrapper */
+}
+
+/* Align radio buttons with the one inside AI-main */
+.radio-buttons-container {
+  display: flex;
+  align-items: center;
+}
+
+
+
+
+
+
+
+
+
+/* Mobile Media Queries for Adjustments */
+@media (max-width: 768px) {
+  .AI-container {
+    padding: 10px; /* Add padding to the container for mobile view */
+  }
+
+  .AI-main {
+    width: 100%;
+    height: auto; /* Adjust height to fit content */
+    padding: 10px;
+    position: relative; /* Allow absolute positioning inside */
+  }
+
+  .Topic {
+    font-size: 1.5rem; /* Adjust font size for mobile */
+  }
+
+  .diff {
+    font-size: 1rem; /* Adjust font size for mobile */
+  }
+
+  .AI_BigDiv {
+    height: auto; /* Allow content to expand naturally */
+  }
+
+  .AI_BigDiv02 {
+    flex-direction: column; /* Stack options vertically */
+    gap: 10px; /* Add space between options */
+  }
+
+  .AI_BigDiv0201 {
+    flex: 1 1 100%; /* Full width for each option */
+    font-size: 1.1em; /* Adjust font size for mobile */
+    width: 100%;
+  }
+
+  .AI-submit-button, .Result-Button {
+    padding: 8px;
+    font-size: 1em; /* Adjust font size for mobile */
+  }
+
+  .AI_BigDiv_Button 
+  {
+    position: relative; /* Allow absolute positioning of children */
+    height: 50px; /* Set height for alignment purposes */
+    display: flex;
+    align-items: center; /* Vertically center the content */
+    justify-content: space-between; /* Distribute space between items */
+  }
+
+  .radio-btns {
+    position: relative; /* Keep relative positioning for stacking */
+    margin-bottom: 10px; /* Space below radio buttons */
+  }
+
+  .toggle-assistant-button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1em;
+  }
+  
+  /* Position the toggle button in the top-right corner of the container */
+  .AI_BigDiv_Button .toggle-assistant-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  
+  /* Hover effect for the toggle button */
+  .toggle-assistant-button:hover {
+    background-color: #138496;
+  }
+
+  .AI-assistant {
+    position: static; /* Position below AI-main */
+    width: 100%;
+    height: auto;
+    display: none; /* Hide by default */
+    border-left: none; /* Remove border for mobile view */
+    border-radius: 0; /* Remove border radius for mobile view */
+    box-shadow: none; /* Remove shadow for mobile view */
+  }
+}
+
+@media (max-width: 576px) {
+  .AI-main {
+    padding: 5px;
+  }
+
+  .Topic {
+    font-size: 1.2rem; /* Further adjust font size for very small screens */
+  }
+
+  .diff {
+    font-size: 0.9rem; /* Further adjust font size for very small screens */
+  }
+
+  .AI_BigDiv0201 {
+    font-size: 1em; /* Further adjust font size for very small screens */
+    padding: 15px; /* Adjust padding for small screens */
+  }
+
+  .AI-submit-button, .Result-Button {
+    padding: 6px;
+    font-size: 0.9em; /* Further adjust font size for very small screens */
+  }
 }

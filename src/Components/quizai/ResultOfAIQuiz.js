@@ -8,13 +8,13 @@ function ResultOfAIQuiz() {
   const { username,aimark,aifoctopic } = useContext(QuizContext);
 
   return (
-    <div style={{ background: 'linear-gradient(to right, #a1c4fd, #c2e9fb)', height: '100vh' }}>
+    <div >
     <div className='navbar-container'>
       <Navigationbar />
     </div>
     <div className="result-container">
     <div style={{ display: 'flex', justifyContent: 'center'}}>
-    <Navigationbar />
+    
   </div>
   
       <h2 className="result-header">Result Page</h2>

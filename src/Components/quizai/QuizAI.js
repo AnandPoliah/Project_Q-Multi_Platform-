@@ -42,7 +42,7 @@ const QuizAI = () => {
     const tno=topicarr.length;
     const fetchData = async () => {
         try {
-            const genAI = new GoogleGenerativeAI("AIzaSyDbSkyCbEk2DC3uCVLHKTpgSdfj02XGDRY");
+            const genAI = new GoogleGenerativeAI("AIzaSyBfhEfcuOVGoousCbyIfARdiaAS5HZ8Qwk");
             const model = genAI.getGenerativeModel({
                 model: "gemini-1.5-pro",
                 generationConfig: {
@@ -211,97 +211,96 @@ const QuizAI = () => {
         setBackgroundImage(image);
     };
 
-    return (
-        <div className='AI-container' style={{ backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'none',backgroundSize: 'cover', transition: 'background-image 0.3s'}}>
-        <div>
-        <label><input type="radio" value="" checked={backgroundImage === ''} onChange={() => handleChange1('')} /> </label>
-        <label><input type="radio" value="QB1" checked={backgroundImage === QB1} onChange={() => handleChange1(QB1)} /> </label>
-        <label><input type="radio" value="QB2" checked={backgroundImage === QB2} onChange={() => handleChange1(QB2)} /> </label>
-        <label><input type="radio" value="QB3" checked={backgroundImage === QB3} onChange={() => handleChange1(QB3)} /> </label>
-        <label><input type="radio" value="QB4" checked={backgroundImage === QB4} onChange={() => handleChange1(QB4)} /> </label>
-        <label><input type="radio" value="QB5" checked={backgroundImage === QB5} onChange={() => handleChange1(QB5)} /> </label>
-        <label><input type="radio" value="QB6" checked={backgroundImage === QB6} onChange={() => handleChange1(QB6)} /> </label>
-        <label><input type="radio" value="QB7" checked={backgroundImage === QB7} onChange={() => handleChange1(QB7)} /> </label>
-    </div>
-        <div className='Topic'>{quesTop}</div>
-        <div className='diff'>{levelarr}</div>
-            <div className='AI-main' style={{  backgroundColor: backgroundColor}}>
-                {notification && (
-                    <div className='notification'>
-                        {notification}
-                    </div>
-                )}
-                
-                <div className='AI_BigDiv_Button'>
-                    <div>
-                        <label><input type="radio" value="" checked={backgroundColor === ''} onChange={() => handleChange2('')} /> </label>
-                        <label><input type="radio" value="peachpuff" checked={backgroundColor === 'peachpuff'} onChange={() => handleChange2('peachpuff')} /> </label>
-                        <label><input type="radio" value="lightgreen" checked={backgroundColor === 'lightgreen'} onChange={() => handleChange2('lightgreen')} /> </label>
-                        <label><input type="radio" value="lightcyan" checked={backgroundColor === 'lightcyan'} onChange={() => handleChange2('lightcyan')} /> </label>
-                    </div>
-                
-                    <div>
-                        <button className='toggle-assistant-button' onClick={() => setAssistantVisible(!assistantVisible)}>
-                            {assistantVisible ? "Hide Assistant" : "Show Assistant"}
-                        </button>
-                    </div>
-                </div>
 
-               
-                <div className='AI_BigDiv'>
-                    <div className='AI_BigDiv01'>
-                        <div className='AI_BigDiv0101'>{questionData.question}</div>
-                    </div>
-
-                    <div className='AI_BigDiv02'>
-                        <div 
-                            className='AI_BigDiv0201' 
-                            style={getDivStyle(1)} 
-                            onClick={() => handleDivClick(1)}
-                        >
-                            {questionData.option1}
-                        </div>
-
-                        <div 
-                            className='AI_BigDiv0201' 
-                            style={getDivStyle(2)} 
-                            onClick={() => handleDivClick(2)}
-                        >
-                            {questionData.option2}
-                        </div>
-
-                        <div 
-                            className='AI_BigDiv0201' 
-                            style={getDivStyle(3)} 
-                            onClick={() => handleDivClick(3)}
-                        >
-                            {questionData.option3}
-                        </div>
-
-                        <div 
-                            className='AI_BigDiv0201' 
-                            style={getDivStyle(4)} 
-                            onClick={() => handleDivClick(4)}
-                        >
-                            {questionData.option4}
-                        </div>
-                    </div>
-                    <div className='AI_BigDiv03'>
-                        <button className='AI-submit-button' onClick={handleResult}>{btnName}</button>
-            
-                        <button className='Result-Button' onClick={() => handleRes()}>Result</button>
-                      
-                    </div>
-                </div>
-            </div>
-            <div className={`AI-assistant ${assistantVisible ? 'active' : ''}`}>
-                <QuizAssistant
-                    question={questionData.question}
-                    solution={getCorrectAnswerText()}
-                />
-            </div>
+  return (
+    <div className='AI-container' style={{ backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'none', backgroundSize: 'cover', transition: 'background-image 0.3s' }}>
+      <div className='radio-assistant-wrapper'>
+        <div className='radio-buttons-container'>
+          <label><input type="radio" value="" checked={backgroundImage === ''} onChange={() => handleChange1('')} /> </label>
+          <label><input type="radio" value="QB1" checked={backgroundImage === QB1} onChange={() => handleChange1(QB1)} /> </label>
+          <label><input type="radio" value="QB2" checked={backgroundImage === QB2} onChange={() => handleChange1(QB2)} /> </label>
+          <label><input type="radio" value="QB3" checked={backgroundImage === QB3} onChange={() => handleChange1(QB3)} /> </label>
+          <label><input type="radio" value="QB4" checked={backgroundImage === QB4} onChange={() => handleChange1(QB4)} /> </label>
+          <label><input type="radio" value="QB5" checked={backgroundImage === QB5} onChange={() => handleChange1(QB5)} /> </label>
+          <label><input type="radio" value="QB6" checked={backgroundImage === QB6} onChange={() => handleChange1(QB6)} /> </label>
+          <label><input type="radio" value="QB7" checked={backgroundImage === QB7} onChange={() => handleChange1(QB7)} /> </label>
         </div>
-    );
+      </div>
+      <div className='Topic'>{quesTop}</div>
+      <div className='diff'>{levelarr}</div>
+      <div className='AI-main' style={{ backgroundColor: backgroundColor }}>
+        {notification && (
+          <div className='notification'>
+            {notification}
+          </div>
+        )}
+
+        <div className='AI_BigDiv_Button'>
+          <div className='radio-btns'>
+            <label><input type="radio" value="" checked={backgroundColor === ''} onChange={() => handleChange2('')} /> </label>
+            <label><input type="radio" value="peachpuff" checked={backgroundColor === 'peachpuff'} onChange={() => handleChange2('peachpuff')} /> </label>
+            <label><input type="radio" value="lightgreen" checked={backgroundColor === 'lightgreen'} onChange={() => handleChange2('lightgreen')} /> </label>
+            <label><input type="radio" value="lightcyan" checked={backgroundColor === 'lightcyan'} onChange={() => handleChange2('lightcyan')} /> </label>
+          </div>
+          <button className='toggle-assistant-button' onClick={() => setAssistantVisible(!assistantVisible)}>
+            {assistantVisible ? "Hide Assistant" : "Show Assistant"}
+          </button>
+        </div>
+
+        <div className='AI_BigDiv'>
+          <div className='AI_BigDiv01'>
+            <div className='AI_BigDiv0101'>{questionData.question}</div>
+          </div>
+
+          <div className='AI_BigDiv02'>
+            <div 
+              className='AI_BigDiv0201' 
+              style={getDivStyle(1)} 
+              onClick={() => handleDivClick(1)}
+            >
+              {questionData.option1}
+            </div>
+
+            <div 
+              className='AI_BigDiv0201' 
+              style={getDivStyle(2)} 
+              onClick={() => handleDivClick(2)}
+            >
+              {questionData.option2}
+            </div>
+
+            <div 
+              className='AI_BigDiv0201' 
+              style={getDivStyle(3)} 
+              onClick={() => handleDivClick(3)}
+            >
+              {questionData.option3}
+            </div>
+
+            <div 
+              className='AI_BigDiv0201' 
+              style={getDivStyle(4)} 
+              onClick={() => handleDivClick(4)}
+            >
+              {questionData.option4}
+            </div>
+          </div>
+          <div className='AI_BigDiv03'>
+            <button className='AI-submit-button' onClick={handleResult}>{btnName}</button>
+            <button className='Result-Button' onClick={() => handleRes()}>Result</button>
+          </div>
+        </div>
+      </div>
+      <div className={`AI-assistant ${assistantVisible ? 'active' : ''}`}>
+        <QuizAssistant
+          question={questionData.question}
+          solution={getCorrectAnswerText()}
+        />
+      </div>
+    </div>
+  );
 };
+  
+
 
 export default QuizAI;

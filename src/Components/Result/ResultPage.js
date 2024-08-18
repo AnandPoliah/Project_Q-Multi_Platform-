@@ -29,10 +29,11 @@ function ResultPage() {
       });
 
     // Update the wrong topics count based on the fetched quiz data
-    axios.get('http://localhost:8080/quiz/getQuiz')
+    axios.get(`${process.env.REACT_APP_API_URL2}/Questions`)
       .then(response => {
         const filteredQuiz = response.data.find(quiz => quiz.quizId === quizId);
-        if (filteredQuiz) {
+        if (filteredQuiz) 
+        {
           const topicCounts = {};
 
           filteredQuiz.questions.forEach(question => {
@@ -50,24 +51,27 @@ function ResultPage() {
 
           setWrongTopics(topicsArray);
         }
+        else {
+          console.warn('No quiz found with quizId:', quizId); // Warn if no quiz is found
+        }
       })
       .catch(error => console.error('Error fetching quiz data:', error));
   }, [username, mark, quizName, quizTopic, quizId, correctFocusTopic]);
 
   return (
-    <div className="result-container">
-    <div className='navbar-container'>
-      <Navigationbar />
-    </div>
-      <h2 className="result-header">Result Page</h2>
-      <div className="result-info">
+    <div className="unique-result-container">
+      <div className='unique-navbar-container'>
+        <Navigationbar />
+      </div>
+      <h2 className="unique-result-header">Result Page</h2>
+      <div className="unique-result-info">
         <ul>
           <li>Quiz Topic: {quizTopic}</li>
           <li>Quiz Name: {quizName}</li>
           <li>You Scored: {mark}</li>
         </ul>
       </div>
-      <table className="result-table">
+      <table className="unique-result-table">
         <thead>
           <tr>
             <th>Quiz Topic</th>
@@ -87,10 +91,6 @@ function ResultPage() {
           ))}
         </tbody>
       </table>
-      <div className="links">
-        <Link to="/">Home</Link>
-        <Link to="/leaderboard">Leaderboard</Link>
-      </div>
     </div>
   );
 }

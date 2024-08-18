@@ -14,12 +14,38 @@
     justify-content: space-between;
     flex-wrap: wrap;
     margin-bottom: 20px;
+    gap: 20px; /* Added gap for consistent spacing between sections */
 }
 
-.nt-footer-content > div {
-    flex: 1;
-    max-width: 300px;
-    margin: 10px;
+/* Responsive adjustments */
+@media (min-width: 640px) { /* sm */
+    .nt-footer-content {
+        flex-direction: row;
+    }
+
+    .nt-footer-content > div {
+        flex: 1 1 45%; /* Each section takes about 45% of the width */
+        max-width: 300px;
+        margin: 10px auto; /* Center the sections */
+    }
+}
+
+@media (min-width: 768px) { /* md */
+    .nt-footer-content > div {
+        flex: 1 1 30%; /* Adjust for larger screens */
+        max-width: 300px;
+    }
+}
+
+@media (min-width: 1024px) { /* lg */
+    .nt-footer-content {
+        flex-wrap: nowrap; /* Prevent wrapping on larger screens */
+        justify-content: space-evenly; /* Distribute space evenly */
+    }
+
+    .nt-footer-content > div {
+        flex: 1 1 22%; /* Reduce width to fit more items in a row */
+    }
 }
 
 .nt-contact h2, .nt-social h2, .nt-about h2 {

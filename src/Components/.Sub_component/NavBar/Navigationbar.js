@@ -1,16 +1,11 @@
-// src/components/NavBar/Navbar.js
-
 import React, { useContext, useState } from 'react';
 import './Navigationbar.css';
 import QICON from '../../../Files/QICON.jpg';
-import { FaJava, FaPython, FaReact, FaTrophy, FaRobot, FaUserCircle, FaChartLine,FaPlus } from 'react-icons/fa';
+import { FaJava, FaPython, FaReact, FaTrophy, FaRobot, FaUserCircle, FaChartLine, FaPlus } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import Modal from '../../login_signup/Modal';
 import LoginComponent from '../../login_signup/LoginComponent';
 import { QuizContext } from '../../context/QuizContext';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChartLine } from '@fortawesome/free-solid-svg-icons';
-
 
 const Navigationbar = () => {
   const { setQuizTopic, username } = useContext(QuizContext);
@@ -19,14 +14,12 @@ const Navigationbar = () => {
 
   const updateQuizTopic = (topic) => 
   {
-    if (!username) 
-    {
-      setShowLoginModal(true);
-    } 
-    else 
-    {
-      switch (topic) 
-      {
+    // if (!username) 
+    // {
+    //   setShowLoginModal(true);
+    // } 
+    
+      switch (topic) {
         case 'profile':
           navigate('/profile');
           break;
@@ -50,7 +43,7 @@ const Navigationbar = () => {
           navigate('/QuizPage');
           break;
       }
-    }
+    
   };
 
   const handleLoginClose = () => {
@@ -62,19 +55,19 @@ const Navigationbar = () => {
       <nav className="navbar">
         <ul>
           <li>
-            <img src={QICON} alt="QICON" className="navbar-image" onClick={()=> updateQuizTopic("Home")}/>
+            <img src={QICON} alt="QICON" className="navbar-image" onClick={() => updateQuizTopic("Home")} />
           </li>
           <li className="tooltip-container">
-          <FaChartLine className='navbar-icon' onClick={() => updateQuizTopic('Adapt')} />
-          <div className="tooltip">Adaptive Learning</div>
+            <FaChartLine className='navbar-icon' onClick={() => updateQuizTopic('Adapt')} />
+            <div className="tooltip">Adaptive Learning</div>
           </li>
           <li className="tooltip-container">
-          <FaRobot className="navbar-icon" onClick={() => updateQuizTopic('AI')} />
-          <div className="tooltip">AI Quiz</div>
+            <FaRobot className="navbar-icon" onClick={() => updateQuizTopic('AI')} />
+            <div className="tooltip">AI Quiz</div>
           </li>
           <li className="tooltip-container">
-          <FaPlus className="navbar-icon" onClick={() => updateQuizTopic('Create')} />
-          <div className="tooltip">Create</div>
+            <FaPlus className="navbar-icon" onClick={() => updateQuizTopic('Create')} />
+            <div className="tooltip">Create</div>
           </li>
           <li className="tooltip-container">
             <FaTrophy className="navbar-icon" onClick={() => updateQuizTopic('Leader')} />

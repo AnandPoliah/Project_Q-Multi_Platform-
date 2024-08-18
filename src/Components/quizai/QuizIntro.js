@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Select from 'react-select';
 import './QuizIntro.css'; // Ensure this file includes the styles provided
 import { useNavigate } from 'react-router-dom';
+import Navigationbar from '../.Sub_component/NavBar/Navigationbar';
 
 const QuizIntro = () => {
   const [selectedTopics, setSelectedTopics] = useState([]);
@@ -35,7 +36,9 @@ const QuizIntro = () => {
 
   return (
     <div className='FRM-Quiz-Intro'>
-      {isDisclaimerVisible && (
+    <div style={{ position: 'fixed', top: 0, zIndex: 1000 }}>
+    <Navigationbar />
+  </div>      {isDisclaimerVisible && (
         <div className="disclaimer-popup">
           <div className="disclaimer-content">
             <h2 style={{ fontSize: '24px' }}>Disclaimer</h2>

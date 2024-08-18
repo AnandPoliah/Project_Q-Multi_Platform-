@@ -13,7 +13,7 @@ export default function SignupComponent() {
 
   const checkUserExists = async (username) => {
     try {
-      const response = await axios.get('http://localhost:8080/user/getUser');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/user`);
       return response.data.some(user => user.username === username);
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -32,17 +32,14 @@ export default function SignupComponent() {
       return;
     }
 
-    axios.post('http://localhost:8080/user/insertUser', signupDetails)
-      .then(response => 
-      {
-        setNotification({ message: 'Signup successful!', type: 'success' });
+    axios.post(`${process.env.REACT_APP_API_URL}/user`, signupDetails)
+      .then(response => {
+        alert('Signup successful:');
         setUsername(signupDetails.username); 
-        setTimeout(() => navigate('/'), 2000); // Redirect after 2 seconds
+        navigate('/'); 
       })
-      .catch(error => 
-      {
+      .catch(error => {
         console.error('Signup error:', error);
-        setNotification({ message: 'Signup failed. Please try again.', type: 'error' });
       });
   };
 

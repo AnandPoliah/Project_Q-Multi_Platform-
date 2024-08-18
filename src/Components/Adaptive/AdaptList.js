@@ -31,10 +31,12 @@ const AdaptList = () => {
     setShowWelcomePopup(true);
   }, []);
 
-  const updateQuizTopic = (topic) => {
-    if (!username) {
-      setShowLoginModal(true);
-    } else {
+  const updateQuizTopic = (topic) => 
+    {
+    // if (!username) {
+    //   setShowLoginModal(true);
+    // }
+    
       switch(topic) {
         case 'JEE':
           navigate('/Adapt', { state: { topic } });
@@ -52,7 +54,7 @@ const AdaptList = () => {
           setQuizTopic(topic);
           navigate('/QuizPage');
           break;
-      }
+      
     }
   };
 
@@ -107,7 +109,7 @@ const AdaptList = () => {
       </Modal>
 
       {showWelcomePopup && (
-        <div style={{height:'100vh',width:'100%', backgroundColor:"blue"}}> 
+        <div > 
         <div className="welcome-popup">
           <div className="welcome-content">
             <h2 style ={{ fontSize: '30px'}}>What does this do?</h2>

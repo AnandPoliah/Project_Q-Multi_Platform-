@@ -16,11 +16,11 @@ const HomeComponent = () => {
 
   const updateQuizTopic = (topic) => 
   {
-    if (!username) 
-    {
-      setShowLoginModal(true);
-    } 
-    else if(topic === "AI")
+    // if (!username) 
+    // {
+    //   setShowLoginModal(true);
+    // } 
+    if(topic === "AI")
     {
       navigate('/form');
     }
@@ -43,7 +43,8 @@ const HomeComponent = () => {
     }
   };
 
-  const handleLoginClose = () => {
+  const handleLoginClose = () => 
+  {
     setShowLoginModal(false);
   };
 

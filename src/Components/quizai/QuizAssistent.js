@@ -8,7 +8,7 @@ const QuizAssistant = ({ question, solution, resources }) => {
     const [error, setError] = useState('');
     const [resourceSuggested, setResourceSuggested] = useState(false);
     const [showResources, setShowResources] = useState(false);
-    console.log("Solutioin:"+solution);
+
     const fetchHint = async () => {
         try {
             const genAI = new GoogleGenerativeAI("AIzaSyDf6jnI-AMnAZESlwOZgLau8sa8slJlCxg");
@@ -64,7 +64,7 @@ const QuizAssistant = ({ question, solution, resources }) => {
                 <div className='chat-container'>
                     <h2>{question}</h2>
                     {conversationHistory.map((entry, index) => (
-                        <div key={index}>
+                        <div key={index} className='chat-entry'>
                             <div className='chat-bubble user-bubble'>
                                 <p>{entry.userPrompt}</p>
                             </div>

@@ -13,40 +13,36 @@ const LoginComponent = ({ onClose }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:8080/user/getUser') 
+    axios.get(`${process.env.REACT_APP_API_URL}/user`) 
       .then(response => setUsers(response.data))
       .catch(error => console.error('Error:', error));
   }, []);
 
-  const handleLogin = (e) => 
-  {
+  const handleLogin = (e) => {
     e.preventDefault();
     const foundUsers = users.filter(user => user.username === loginDetails.username);
 
-    if (foundUsers.length > 0 && foundUsers[0].password === loginDetails.password) 
-    {
+    if (foundUsers.length > 0 && foundUsers[0].password === loginDetails.password) {
       setUsername(foundUsers[0].username);
       setNotification({ message: 'Login Successful', type: 'success' });
-      setTimeout(() => 
-      {
+      setTimeout(() => {
         setNotification({ message: '', type: '' });
         onClose();
         navigate('/');
       }, 2000); // Show notification for 2 seconds before navigating
-    } 
-    else if (foundUsers.length > 0) 
-    {
+    } else if (foundUsers.length > 0) {
       setNotification({ message: 'Incorrect Login Details', type: 'error' });
-    } 
-    else 
-    {
+      setTimeout(() => setNotification({ message: '', type: '' }), 3000); // Clear notification after 3 seconds
+    } else {
       setNotification({ message: 'User not found. Please Sign Up', type: 'error' });
-      setTimeout(() => navigate('/signup'), 2000); // Navigate after 2 seconds
+      setTimeout(() => {
+        setNotification({ message: '', type: '' });
+        navigate('/signup');
+      }, 3000); // Clear notification and navigate after 3 seconds
     }
   };
 
-  const handleInputChange = (e) => 
-  {
+  const handleInputChange = (e) => {
     setLoginDetails({ ...loginDetails, [e.target.name]: e.target.value });
   };
 

@@ -13,7 +13,7 @@ const ProfilePage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:8080/result/getResult')
+    axios.get(`${process.env.REACT_APP_API_URL}/result`)
       .then(response => {
         setTestResults(response.data);
         setFilteredResults(response.data);

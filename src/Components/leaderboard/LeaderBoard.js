@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './LeaderBoard.css';
 import axios from 'axios';
-import QICON from '../../Files/QICON.jpg';
 import { useNavigate } from 'react-router-dom';
 import Navigationbar from '../.Sub_component/NavBar/Navigationbar';
 
@@ -16,34 +15,36 @@ const LeaderBoard = () => {
     navigate('/');
   };
 
-  useEffect(() => {
-    axios.get('http://localhost:8080/result/getResult')
+  useEffect(() => 
+  {
+    axios.get(`${process.env.REACT_APP_API_URL}/result`)
       .then(response => setLeaderBoardData(response.data))
       .catch(error => console.error('Error:', error));
-  }, []);
+  },console.log(leaderboardData), []);
 
   const names = [...new Set(leaderboardData.map(entry => entry.participant)), 'All'];
   const topics = [...new Set(leaderboardData.map(entry => entry.qtopic)), 'All'];
-  const quizNames = [...new Set(leaderboardData.map(entry => entry.qname)), 'All'];
+  const quizNames = [...new Set(leaderboardData
+    .filter(entry => selectedTopic === 'All' || entry.qtopic === selectedTopic)
+    .map(entry => entry.qname)
+),'All'];
+
 
   const filteredData = leaderboardData.filter(entry =>
     (selectedTopic === 'All' || entry.qtopic === selectedTopic) &&
     (selectedParticipant === 'All' || entry.participant === selectedParticipant) &&
-    (selectedQuizName === 'All' || entry.qname === selectedQuizName) 
+    (selectedQuizName === 'All' || entry.qname === selectedQuizName)
   );
   const sortedData = filteredData.sort((a, b) => b.mark - a.mark);
 
   return (
     <div className="leaderboard-container">
-    <div className='navbar-container'>
-      <Navigationbar />
-    </div>
+      <div className='navbar-container'>
+        <Navigationbar />
+      </div>
       <div className="leaderboard-content">
         <h1 className="leaderboard-header">Leaderboard</h1>
         <div className="filters">
-
-
-
           <div className="filter">
             <label htmlFor="topic-select">Filter by Quiz Topic:</label>
             <select id="topic-select" value={selectedTopic} onChange={e => setSelectedTopic(e.target.value)}>
@@ -54,13 +55,13 @@ const LeaderBoard = () => {
           </div>
 
           <div className="filter">
-          <label>Filter by participant:</label>
-          <select value={selectedParticipant} onChange={e => setSelectedParticipant(e.target.value)}>
-            {names.map(topic => (
-              <option key={topic} value={topic}>{topic}</option>
-            ))}
-          </select>
-        </div>
+            <label>Filter by Participant:</label>
+            <select value={selectedParticipant} onChange={e => setSelectedParticipant(e.target.value)}>
+              {names.map(name => (
+                <option key={name} value={name}>{name}</option>
+              ))}
+            </select>
+          </div>
 
           <div className="filter">
             <label htmlFor="quiz-select">Filter by Quiz Name:</label>
@@ -71,7 +72,6 @@ const LeaderBoard = () => {
             </select>
           </div>
         </div>
-
 
         <table className="table">
           <thead>
