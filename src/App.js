@@ -8,7 +8,6 @@ import { useContext } from 'react';
 import ResultPage from './Components/Result/ResultPage';
 import Leaderboard from './Components/leaderboard/LeaderBoard';
 import ProfilePage from './Components/profilePage/ProfilePage';
-import QuizAI from './Components/QuizAI/QuizAI';
 import QuizIntro from './Components/QuizAI/QuizIntro';
 import { QuizContext, QuizProvider } from './Components/context/QuizContext';
 import QuizTemplate from './Components/QuestionRender/QuizTemplate';
@@ -17,6 +16,7 @@ import Adaptive from './Components/Adaptive/Adaptive';
 import QuizCreator from './Components/Quiz_Creator/QuizCreator';
 import AdaptList from './Components/Adaptive/AdaptList';
 import ResultOfAIQuiz from './Components/QuizAI/ResultOfAIQuiz';
+import QuizAI from './Components/QuizAI/QuizAI';
 
 function ProtectedRoute({ children }) 
 {
@@ -31,7 +31,7 @@ function App() {
         <Routes>
 
         
-         {/* <Route path="/signup" element={<SignupComponent />} />
+          <Route path="/signup" element={<SignupComponent />} />
           <Route path="/" element={<HomeComponent />} />
 
           <Route path="/TopicList" element={<TopicList/>} />
@@ -52,25 +52,10 @@ function App() {
           <Route path="/result" element={<ProtectedRoute><ResultPage /></ProtectedRoute>} />
           <Route path="/leaderboard" element={<ProtectedRoute><Leaderboard /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><ProfilePage/></ProtectedRoute>}/>
-          */}
+          
 
           
-          <Route path="/signup" element={<SignupComponent />} />
-<Route path="/" element={<HomeComponent />} />
-
-<Route path="/TopicList" element={<TopicList />} />
-<Route path="/QuizPage" element={<Quizdisplay />} />
-<Route path="/Quiz" element={<QuestionList />} />
-<Route path="/QuizTemplate" element={<QuizTemplate />} />
-<Route path="/form" element={<QuizIntro />} />
-<Route path="/AI" element={<QuizAI />} />
-<Route path="/ResultOfAIQuiz" element={<ResultOfAIQuiz />} />
-<Route path="/Adapt" element={<Adaptive />} />
-<Route path="/AdaptList" element={<AdaptList />} />
-<Route path="/create" element={<QuizCreator />} />
-<Route path="/result" element={<ResultPage />} />
-<Route path="/leaderboard" element={<Leaderboard />} />
-<Route path="/profile" element={<ProfilePage />} />
+          
 
         </Routes>
       </BrowserRouter>
