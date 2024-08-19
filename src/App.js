@@ -8,7 +8,6 @@ import { useContext } from 'react';
 import ResultPage from './Components/Result/ResultPage';
 import Leaderboard from './Components/leaderboard/LeaderBoard';
 import ProfilePage from './Components/profilePage/ProfilePage';
-import QuizIntro from './Components/QuizAI/QuizIntro';
 import { QuizContext, QuizProvider } from './Components/context/QuizContext';
 import QuizTemplate from './Components/QuestionRender/QuizTemplate';
 import TopicList from './Components/TopicList/TopicList';
@@ -17,6 +16,7 @@ import QuizCreator from './Components/Quiz_Creator/QuizCreator';
 import AdaptList from './Components/Adaptive/AdaptList';
 import ResultOfAIQuiz from './Components/QuizAI/ResultOfAIQuiz';
 import QuizAI from './Components/QuizAI/QuizAI';
+import QuizIntro from './Components/QuizAI/QuizIntro';
 
 function ProtectedRoute({ children }) 
 {
