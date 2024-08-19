@@ -3,7 +3,7 @@ import { FunctionDeclarationSchemaType } from '@google/generative-ai';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { useNavigate ,useLocation} from 'react-router-dom';
 import { QuizContext } from '../context/QuizContext';
-import QuizAssistant from '../partner/QuizAssistant'; // Import QuizAssistant
+import QuizAssistant from './QuizAssistent';
 
 import './QuizAI.css';
 
@@ -251,7 +251,7 @@ const QuizAI = () => {
             </div>
             {showAssistant && (
                 <div className='AI-assistant'>
-                    <QuizAssistant 
+                    <QuizAssistant
                         question={questionData.question}
                         solution={getCorrectAnswerText()}  
                         resources={["we get it from DataBase , by analysing the topics of question"]}
