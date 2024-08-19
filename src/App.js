@@ -1,20 +1,21 @@
 import './App.css';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import { QuizProvider,QuizContext } from './Components/context/QuizContext';
+import { useContext } from 'react';
 import HomeComponent from './Components/Home/HomeComponent';
 import Quizdisplay from './Components/Quizzes/Quizdisplay';
 import QuestionList from './Components/QuestionRender/QuestionList';
 import SignupComponent from './Components/login_signup/SignupComponent';
-import { useContext } from 'react';
 import ResultPage from './Components/Result/ResultPage';
 import Leaderboard from './Components/leaderboard/LeaderBoard';
 import ProfilePage from './Components/profilePage/ProfilePage';
-import { QuizContext, QuizProvider } from './Components/context/QuizContext';
 import QuizTemplate from './Components/QuestionRender/QuizTemplate';
 import TopicList from './Components/TopicList/TopicList';
 import Adaptive from './Components/Adaptive/Adaptive';
 import QuizCreator from './Components/Quiz_Creator/QuizCreator';
 import AdaptList from './Components/Adaptive/AdaptList';
 import ResultOfAIQuiz from './Components/QuizAI/ResultOfAIQuiz';
+
 import QuizAI from './Components/QuizAI/QuizAI';
 import QuizIntro from './Components/QuizAI/QuizIntro';
 
@@ -42,7 +43,7 @@ function App() {
           
           <Route path="/form" element={<ProtectedRoute><QuizIntro/></ProtectedRoute>}/>
           <Route path="/AI" element={<ProtectedRoute><QuizAI/></ProtectedRoute>}/>
-          <Route path ="ResultOfAIQuiz" element={<ProtectedRoute><ResultOfAIQuiz/></ProtectedRoute>}/>
+          <Route path ="/ResultOfAIQuiz" element={<ProtectedRoute><ResultOfAIQuiz/></ProtectedRoute>}/>
           
           <Route path="/Adapt" element={<ProtectedRoute><Adaptive/></ProtectedRoute>}/>
           <Route path="AdaptList" element={<ProtectedRoute><AdaptList/></ProtectedRoute>} />
