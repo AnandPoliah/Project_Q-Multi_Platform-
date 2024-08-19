@@ -7,11 +7,17 @@ import Navigationbar from '../.Sub_component/NavBar/Navigationbar';
 const QuizIntro = () => {
   const [selectedTopics, setSelectedTopics] = useState([]);
   const [difficulty, setDifficulty] = useState('easy');
+  const [geminiApiKey, setGeminiApiKey] = useState('');
+
   const [isDisclaimerVisible, setIsDisclaimerVisible] = useState(true);
   const navigate = useNavigate();
 
   const handleTopicChange = (selectedOptions) => {
     setSelectedTopics(selectedOptions || []);
+  };
+
+  const handleApiKeyChange = (e) => {
+    setGeminiApiKey(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -77,6 +83,18 @@ const QuizIntro = () => {
               <option value="medium">Medium</option>
               <option value="hard">Hard</option>
             </select>
+          </div>
+          <div className="FRM-form-group">
+            <label htmlFor="geminiApiKey" className="FRM-label">Gemini API Key:</label>
+            <input
+              type="text"
+              id="geminiApiKey"
+              className="FRM-input"
+              value={geminiApiKey}
+              onChange={handleApiKeyChange}
+              placeholder="Enter your Gemini API key"
+              required
+            />
           </div>
           <button type="submit" className="FRM-button">Submit</button>
         </form>

@@ -21,7 +21,7 @@ const QuizAI = () => {
     const [questionData, setQuestionData] = useState(null);
     const [selectedOption, setSelectedOption] = useState(null);
     const [correctAnswer, setCorrectAnswer] = useState(null);
-    const [quesTop, setquesTop] = useState('////');
+    const [quesTop, setquesTop] = useState('');
     const [error, setError] = useState('');
     const [mark, setMark] = useState(0);
     const [btnName, setBtnName] = useState("Submit");
@@ -41,9 +41,15 @@ const QuizAI = () => {
     const { topicarr, levelarr } = location.state || {};
     const tno=topicarr.length;
     const fetchData = async () => {
+      const apiKey = localStorage.getItem('geminiApiKey');
+
+      if (!apiKey) {
+         console.error('Gemini API key not found in local storage.');
+      }
+      else{
         try {
-            const genAI = new GoogleGenerativeAI("AIzaSyBfhEfcuOVGoousCbyIfARdiaAS5HZ8Qwk");
-            const model = genAI.getGenerativeModel({
+          const genAI = new GoogleGenerativeAI(apiKey);
+          const model = genAI.getGenerativeModel({
                 model: "gemini-1.5-pro",
                 generationConfig: {
                     responseMimeType: "application/json",
@@ -76,6 +82,7 @@ const QuizAI = () => {
             console.error('Error fetching data:', error);
             setError('Failed to fetch data. Please try again later.');
         }
+      }
     };
 
     useEffect(() => {
