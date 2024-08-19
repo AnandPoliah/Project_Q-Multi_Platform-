@@ -14,11 +14,11 @@ const Navigationbar = () => {
 
   const updateQuizTopic = (topic) => 
   {
-    // if (!username) 
-    // {
-    //   setShowLoginModal(true);
-    // } 
-    
+    if (!username) 
+    {
+      setShowLoginModal(true);
+    } 
+    else{
       switch (topic) {
         case 'profile':
           navigate('/profile');
@@ -43,6 +43,7 @@ const Navigationbar = () => {
           navigate('/QuizPage');
           break;
       }
+    }
     
   };
 
