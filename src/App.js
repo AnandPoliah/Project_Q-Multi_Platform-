@@ -1,6 +1,5 @@
 import './App.css';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-import { QuizProvider,QuizContext } from './Components/context/QuizContext';
 import { useContext } from 'react';
 import HomeComponent from './Components/Home/HomeComponent';
 import Quizdisplay from './Components/Quizzes/Quizdisplay';
@@ -18,6 +17,7 @@ import ResultOfAIQuiz from './Components/QuizAI/ResultOfAIQuiz';
 
 import QuizAI from './Components/QuizAI/QuizAI';
 import QuizIntro from './Components/QuizAI/QuizIntro';
+import { QuizContext, QuizProvider } from './Components/context/QuizContext';
 
 function ProtectedRoute({ children }) 
 {
