@@ -3,7 +3,7 @@ import { QuizContext } from '../context/QuizContext';
 import './ResultOfAIQuiz.css';
 import Navigationbar from '../Sub_component/NavBar/Navigationbar';
 
-function ResultOfAIQuiz() {
+function Airesult() {
   const { username, aimark, aifoctopic } = useContext(QuizContext);
 
   return (
@@ -50,4 +50,4 @@ function ResultOfAIQuiz() {
   );
 }
 
-export default ResultOfAIQuiz;
+export default Airesult;

@@ -1,13 +1,7 @@
 import React, { useState, useContext } from 'react';
-import QICON from '../../Files/QICON.jpg';
 import JICON from '../../Files/Java.png';
 import PYTHON from '../../Files/PHYTHON.jpg';
 import REACT from '../../Files/React.jpg';
-import SPRING from '../../Files/Spring.png';
-import CPP from '../../Files/CPP.png';
-import FB from '../../Files/FB.png';
-import IG from '../../Files/instagram.png';
-import X from '../../Files/twitter.png';
 import APTI from '../../Files/Apti.webp';
 import JEE from '../../Files/JEE2.jpg';
 import NEET from '../../Files/Neet2.jpg';
