@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Navigationbar from '../Sub_component/NavBar/Navigationbar';
 import QB1 from '../../Files/QB-1.jpg'
 import QB2 from '../../Files/QB-2.jpg'
 import QB3 from '../../Files/QB-3.jpg'
@@ -8,6 +7,7 @@ import QB5 from '../../Files/QB-5.png'
 import QB6 from '../../Files/QB-6.jpg'
 import QB7 from '../../Files/QB-7.jpg'
 import { useLocation } from 'react-router-dom';
+import Navigationbar from '../Sub_component/NavBar/Navigationbar';
 
 const quizQuestions=[
   {

@@ -18,7 +18,6 @@ import { useNavigate } from 'react-router-dom';
 import Modal from '../login_signup/Modal';
 import LoginComponent from '../login_signup/LoginComponent';
 import Navigationbar from '../Sub_component/NavBar/Navigationbar';
-import Footer from '../.Sub_component/Footer/Footer';
 
 const AdaptList = () => {
   const { setQuizTopic, username } = useContext(QuizContext);
@@ -102,7 +101,6 @@ const AdaptList = () => {
           </div>
         </div>
       </div>
-      <Footer />
 
       <Modal show={showLoginModal} onClose={handleLoginClose}>
         <LoginComponent onClose={handleLoginClose} />

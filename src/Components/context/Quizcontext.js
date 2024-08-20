@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
 
-const QuizContext = createContext();
+export const QuizContext = createContext();
 
 export const QuizProvider = ({ children }) => {
   const [username, setUsername] = useState('');
@@ -16,5 +16,3 @@ export const QuizProvider = ({ children }) => {
     </QuizContext.Provider>
   );
 };
-
-export default QuizContext;
