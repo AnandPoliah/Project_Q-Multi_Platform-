@@ -13,7 +13,7 @@ import TopicList from './Components/TopicList/TopicList';
 import Adaptive from './Components/Adaptive/Adaptive';
 import QuizCreator from './Components/Quiz_Creator/QuizCreator';
 import AdaptList from './Components/Adaptive/AdaptList';
-import Airesult from './Components/QuizAI/airesult';
+import Airesult from './Components/QuizAI/Airesult';
 
 import QuizAI from './Components/QuizAI/QuizAI';
 import QuizIntro from './Components/QuizAI/QuizIntro';
