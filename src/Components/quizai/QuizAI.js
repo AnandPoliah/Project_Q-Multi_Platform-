@@ -136,7 +136,7 @@ const QuizAI = () => {
         const focusTopicsArray = convertFocusTopicsToArray(focusTopics);
         setAimark(mark);
         setAifocTopic(focusTopicsArray);
-        navigate('/AiResult');
+        navigate('/');
     };
 
     if (error) {
