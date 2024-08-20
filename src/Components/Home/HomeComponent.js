@@ -5,8 +5,8 @@ import LoginComponent from '../login_signup/LoginComponent';
 import { useNavigate } from 'react-router-dom';
 import { QuizContext } from '../context/QuizContext';
 
-import Navigationbar from '../.Sub_component/NavBar/Navigationbar';
-import Footer from '../.Sub_component/Footer/Footer';
+import Footer from '../Sub_component/Footer/Footer';
+import Navigationbar from '../Sub_component/NavBar/Navigationbar';
 
 const HomeComponent = () => {
   const { setQuizTopic, username } = useContext(QuizContext);

@@ -4,7 +4,7 @@ import { QuizContext } from '../context/QuizContext';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import QICON from '../../Files/QICON.jpg';
-import Sidebar from '../.Sub_component/Sidebar/Sidebar';
+import Sidebar from '../Sub_component/Sidebar/Sidebar';
 
 const Quizdisplay = () => {
     const { setQuizTopic, username } = useContext(QuizContext);

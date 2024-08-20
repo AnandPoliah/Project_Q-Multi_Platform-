@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './LeaderBoard.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Navigationbar from '../.Sub_component/NavBar/Navigationbar';
+import Navigationbar from '../Sub_component/NavBar/Navigationbar';
 
 const LeaderBoard = () => {
   const [selectedTopic, setSelectedTopic] = useState('All');

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Navigationbar from '../.Sub_component/NavBar/Navigationbar';
+import Navigationbar from '../Sub_component/NavBar/Navigationbar';
 import QB1 from '../../Files/QB-1.jpg'
 import QB2 from '../../Files/QB-2.jpg'
 import QB3 from '../../Files/QB-3.jpg'

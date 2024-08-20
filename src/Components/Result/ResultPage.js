@@ -3,7 +3,7 @@ import axios from 'axios';
 import { QuizContext } from '../context/QuizContext';
 import { Link, useLocation } from 'react-router-dom';
 import './ResultPage.css';
-import Navigationbar from '../.Sub_component/NavBar/Navigationbar';
+import Navigationbar from '../Sub_component/NavBar/Navigationbar';
 
 function ResultPage() {
   const { mark, quizTopic, quizName, username } = useContext(QuizContext);

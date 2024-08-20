@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { QuizContext } from '../context/QuizContext';
 import './ResultOfAIQuiz.css';
-import Navigationbar from '../.Sub_component/NavBar/Navigationbar';
+import Navigationbar from '../Sub_component/NavBar/Navigationbar';
 
 function ResultOfAIQuiz() {
   const { username,aimark,aifoctopic } = useContext(QuizContext);
